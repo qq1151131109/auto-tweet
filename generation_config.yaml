@@ -1,0 +1,91 @@
+# ============================================
+# 生成流程配置文件
+# ============================================
+# 这个文件统一管理所有生成流程的参数
+# 修改后无需改代码，直接生效
+
+# ============================================
+# 人设生成配置
+# ============================================
+persona:
+  # Stage 1: 核心人设生成
+  stage1_core_persona:
+    temperature: 0.85     # 生成温度 (0.0-2.0)
+    max_tokens: 4000      # 最大token数
+
+  # Stage 2: 推文策略生成
+  stage2_tweet_strategy:
+    temperature: 0.85
+    max_tokens: 8000
+
+  # Stage 3: 示例推文生成
+  stage3_example_tweets:
+    temperature: 0.9      # 示例推文需要更高创造性
+    max_tokens: 8000
+  num_example_tweets: 8   # 生成的示例推文数量
+
+  # Stage 4: 社交网络生成
+  stage4_social_network:
+    temperature: 0.85
+    max_tokens: 4000
+
+  # Stage 5: 真实性特征生成
+  stage5_authenticity:
+    temperature: 0.8
+    max_tokens: 3000
+
+  # Stage 6: 视觉档案生成
+  stage6_visual_profile:
+    temperature: 0.8
+    max_tokens: 2000
+
+  # Stage 7: 角色知识库生成
+  stage7_character_book:
+    temperature: 0.8
+    max_tokens: 5000
+  num_character_entries: 6  # 知识库条目数量
+
+  # 通用配置
+  default_nsfw_level: "enabled"  # NSFW等级: enabled | disabled
+  default_language: "English"    # 默认语言: English | 中文 | 日本語
+
+# ============================================
+# 推文生成配置
+# ============================================
+tweet:
+  # LLM参数
+  temperature: 1.0        # 生成温度 (推文需要高创造性)
+  max_tokens: 2000        # 单条推文最大token
+
+  # 示例选择
+  max_examples: 3         # 从人设中选择的Few-shot示例数量
+
+  # 内容约束
+  tweet_min_length: 140   # 推文最小字符数
+  tweet_max_length: 280   # 推文最大字符数
+  scene_min_words: 50     # 场景描述最小词数
+  scene_max_words: 100    # 场景描述最大词数
+
+  # 日历配置
+  default_calendar_days: 15  # 默认生成日历天数
+
+# ============================================
+# 图片生成配置
+# ============================================
+image:
+  # Z-Image模型参数
+  default_width: 768       # 默认宽度 (像素)
+  default_height: 1024     # 默认高度 (像素)
+  default_steps: 9         # Z-Image-Turbo推荐步数 (1-50)
+  default_cfg: 1.0         # CFG scale (0.0-20.0)
+
+  # LoRA参数
+  default_lora_strength: 1.0  # LoRA强度 (0.0-2.0)
+
+  # 负向提示词
+  negative_prompt: "ugly, deformed, noisy, blurry, low quality"
+
+  # 多GPU配置
+  task_queue_timeout: 1     # 任务队列超时(秒)
+  result_queue_timeout: 300 # 结果队列超时(秒) - 5分钟
+  process_join_timeout: 10  # 进程等待超时(秒)

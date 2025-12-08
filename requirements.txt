@@ -1,0 +1,15 @@
+openai
+aiohttp
+holidays
+requests
+python-dotenv
+
+# Z-Image 依赖
+torch>=2.5.0
+transformers>=4.51.0
+git+https://github.com/huggingface/diffusers  # Z-Image 需要最新版 diffusers
+safetensors
+loguru
+pillow
+accelerate
+huggingface-hub

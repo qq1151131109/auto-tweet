@@ -1,0 +1,36 @@
+# API服务专用依赖
+# 基于 requirements.txt，添加FastAPI和Celery相关依赖
+
+# ===== FastAPI和Web服务 =====
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+
+# ===== Celery异步任务队列 =====
+celery>=5.3.0
+redis>=5.0.0
+flower>=2.0.0  # Celery监控面板
+
+# ===== 文件上传和处理 =====
+python-multipart
+
+# ===== 其他工具 =====
+httpx  # 异步HTTP客户端
+
+# ===== 基础依赖（从requirements.txt继承） =====
+openai
+aiohttp
+holidays
+requests
+python-dotenv
+
+# Z-Image 依赖
+torch>=2.5.0
+transformers>=4.51.0
+git+https://github.com/huggingface/diffusers
+safetensors
+loguru
+pillow
+accelerate
+huggingface-hub

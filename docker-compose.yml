@@ -1,0 +1,119 @@
+version: '3.8'
+
+services:
+  # Redis - 用于Celery消息队列和结果存储
+  redis:
+    image: redis:7-alpine
+    container_name: tweet-gen-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # FastAPI服务
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: tweet-gen-api
+    ports:
+      - "8000:8000"
+    environment:
+      # Redis配置
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
+      # LLM API配置（从.env读取）
+      - LLM_API_KEY=${LLM_API_KEY}
+      - LLM_API_BASE=${LLM_API_BASE}
+      - LLM_MODEL=${LLM_MODEL}
+
+      # 天气API（可选）
+      - WEATHER_API_KEY=${WEATHER_API_KEY}
+
+      # 环境
+      - ENVIRONMENT=development
+      - DEBUG=true
+
+      # API Keys
+      - API_KEYS=${API_KEYS:-demo-key-1,demo-key-2,demo-key-3}
+
+    volumes:
+      - ./personas:/app/personas
+      - ./calendars:/app/calendars
+      - ./output_standalone:/app/output_standalone
+      - ./output_images:/app/output_images
+      - ./task_storage:/app/task_storage
+      - ./uploads:/app/uploads
+
+    depends_on:
+      redis:
+        condition: service_healthy
+
+    command: uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
+
+  # Celery Worker - 处理异步任务（人设生成、推文生成）
+  celery_worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: tweet-gen-celery-worker
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - LLM_API_KEY=${LLM_API_KEY}
+      - LLM_API_BASE=${LLM_API_BASE}
+      - LLM_MODEL=${LLM_MODEL}
+      - WEATHER_API_KEY=${WEATHER_API_KEY}
+
+    volumes:
+      - ./personas:/app/personas
+      - ./calendars:/app/calendars
+      - ./output_standalone:/app/output_standalone
+      - ./output_images:/app/output_images
+      - ./task_storage:/app/task_storage
+      - ./uploads:/app/uploads
+      - ./lora:/app/lora  # LoRA模型
+      - ./Z-Image:/app/Z-Image  # Z-Image模型
+
+    depends_on:
+      redis:
+        condition: service_healthy
+
+    command: celery -A tasks.celery_app worker --loglevel=info --concurrency=4 --pool=solo
+
+    # 如果需要GPU支持（图片生成）
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+
+  # Celery Flower - 任务监控面板（可选）
+  celery_flower:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: tweet-gen-flower
+    ports:
+      - "5555:5555"
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
+    depends_on:
+      redis:
+        condition: service_healthy
+
+    command: celery -A tasks.celery_app flower --port=5555
+
+volumes:
+  redis_data:

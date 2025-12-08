@@ -1,0 +1,22 @@
+# 快速配置示例
+# 复制此文件为 config.sh 并填写你的配置
+
+# LLM API 配置
+export API_KEY="sk-your-api-key-here"
+export API_BASE="https://www.dmxapi.cn/v1"
+export MODEL="grok-4.1-non-thinking"
+
+# ComfyUI 项目路径
+export COMFYUI_DIR="../ComfyUI/custom_nodes/comfyui-twitterchat"
+
+# 输出目录
+export OUTPUT_DIR="output_$(date +%Y%m%d)"
+
+# 并发配置
+export MAX_CONCURRENT=20
+
+# 使用示例:
+# source config.sh
+# python main.py --persona $COMFYUI_DIR/personas/lila_monroe.json \
+#                --calendar $COMFYUI_DIR/calendars/lila_monroe_2025-12.json \
+#                --tweets 5

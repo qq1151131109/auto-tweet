@@ -266,7 +266,8 @@ async def generate_batch_images_single_gpu(
     device: str = "cuda",
     start_slot: int = 0,
     max_images: Optional[int] = None,
-    use_diffusers: bool = True
+    use_diffusers: bool = True,
+    use_advanced: bool = False  # 是否使用高级生成器
 ) -> List[Dict]:
     """
     单GPU批量生成图片
@@ -279,10 +280,36 @@ async def generate_batch_images_single_gpu(
         start_slot: 起始slot
         max_images: 最大生成数量
         use_diffusers: 是否使用diffusers模式（支持LoRA）
+        use_advanced: 是否使用高级生成器（三阶段渐进式）
 
     Returns:
         生成结果列表
     """
+    # 根据配置选择生成器
+    if use_advanced:
+        from core.image_generator_advanced import generate_batch_images_advanced
+        from config.image_config import load_image_config, get_generation_mode, load_negative_prompt_template
+
+        # 加载配置
+        config = load_image_config()
+        generation_mode = get_generation_mode(config)
+        negative_prompt_template = load_negative_prompt_template(config)
+
+        # 使用高级生成器
+        use_progressive = (generation_mode == "advanced")
+
+        return await generate_batch_images_advanced(
+            tweets_batch=tweets_batch,
+            output_dir=output_dir,
+            model_path=model_path,
+            device=device,
+            use_progressive=use_progressive,
+            negative_prompt_template=negative_prompt_template,
+            start_slot=start_slot,
+            max_images=max_images
+        )
+
+    # 使用原有生成器（备用方案）
     generator = ZImageGenerator(model_path=model_path, device=device, use_diffusers=use_diffusers)
 
     tweets = tweets_batch["tweets"]
@@ -598,17 +625,31 @@ async def generate_batch_images_multi_gpu(
 
 
 class ImageGenerationCoordinator:
-    """图片生成协调器 - 支持单GPU和多GPU模式，支持LoRA"""
+    """图片生成协调器 - 支持单GPU和多GPU模式，支持LoRA，支持新旧方案切换"""
 
     def __init__(
         self,
         model_path: str = "Z-Image/ckpts/Z-Image-Turbo",
         num_gpus: int = None,
-        use_diffusers: bool = True
+        use_diffusers: bool = True,
+        use_advanced: bool = None  # None=从配置读取，True=强制使用高级模式，False=强制使用备用模式
     ):
         self.model_path = model_path
         self.num_gpus = num_gpus
         self.use_diffusers = use_diffusers
+
+        # 决定是否使用高级模式
+        if use_advanced is None:
+            # 从配置文件读取
+            from config.image_config import load_image_config, get_generation_mode
+            config = load_image_config()
+            generation_mode = get_generation_mode(config)
+            self.use_advanced = (generation_mode == "advanced")
+        else:
+            self.use_advanced = use_advanced
+
+        logger.info(f"🔧 ImageGenerationCoordinator 初始化")
+        logger.info(f"   生成模式: {'高级模式 (三阶段渐进式)' if self.use_advanced else '备用模式 (单阶段生成)'}")
 
     async def generate_from_tweets_batch(
         self,
@@ -642,9 +683,17 @@ class ImageGenerationCoordinator:
         logger.info(f"   人设: {tweets_batch['persona']['name']}")
         logger.info(f"   推文数: {len(tweets_batch['tweets'])}")
         logger.info(f"   模式: {'Diffusers (支持LoRA)' if self.use_diffusers else 'PyTorch原生'}")
+        logger.info(f"   生成方案: {'高级 (三阶段渐进式)' if self.use_advanced else '备用 (单阶段)'}")
 
         # 选择生成模式
         if use_multi_gpu and torch.cuda.is_available() and torch.cuda.device_count() > 1:
+            # 多GPU模式暂不支持高级生成器，使用备用方案
+            if self.use_advanced:
+                logger.warning("⚠️  多GPU模式暂不支持高级生成器，使用备用方案")
+                use_advanced_for_this_run = False
+            else:
+                use_advanced_for_this_run = False
+
             results = await generate_batch_images_multi_gpu(
                 tweets_batch=tweets_batch,
                 output_dir=output_dir,
@@ -662,7 +711,8 @@ class ImageGenerationCoordinator:
                 device="cuda" if torch.cuda.is_available() else "cpu",
                 start_slot=start_slot,
                 max_images=max_images,
-                use_diffusers=self.use_diffusers
+                use_diffusers=self.use_diffusers,
+                use_advanced=self.use_advanced  # 传递高级模式标志
             )
 
         return results

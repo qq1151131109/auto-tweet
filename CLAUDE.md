@@ -10,6 +10,14 @@ This is a standalone high-concurrency NSFW tweet generation system that **comple
 
 **Critical**: All prompts, calendar generation logic, and content strategies are **copied verbatim** from the original ComfyUI nodes. Do NOT modify these fine-tuned prompts without understanding their purpose.
 
+**Recent Major Features** (as of Dec 2025):
+- **Content Pool System (DEFAULT)**: Generate tweets by content type distribution without needing calendar ⭐ NEW
+- **LLM Realism Injection**: Real-world photography effects (blur, grain, lighting flaws) injected via LLM
+- **Mirror Selfie Optimization**: 25-30% mirror selfie content for higher engagement
+- **PromptEnhancer System**: Decoupled architecture for model-specific prompt enhancement (Z-Image/SDXL)
+- **FastAPI REST API**: Production-ready API with Celery background workers
+- **Dual Configuration System**: `generation_config.yaml` (LLM params) + `image_generation.yaml` (image model params)
+
 ## Quick Start Commands
 
 ### Setup
@@ -30,10 +38,38 @@ cp .env.example .env
 
 ### Testing
 ```bash
-# Run test suite
+# Run full test suite
 cd tests && bash test.sh
 
+# Test Z-Image environment (no model loading)
+python tests/test_zimage.py
+
+# Test LLM realism injection
+python test_llm_realism.py
+
+# Test prompt enhancer
+python test_prompt_enhancer.py
+
+# Test tweet length validation
+python test_tweet_length.py
+
 # Note: Tests expect files at ../personas/*.json and ../calendars/*.json
+```
+
+### API Server (Production Mode)
+```bash
+# Start Redis (required for Celery)
+# macOS: brew services start redis
+# Linux: sudo systemctl start redis
+# Docker: docker run -d -p 6379:6379 redis:7-alpine
+
+# Start API server + Celery workers
+bash start_api.sh
+
+# API will be available at:
+# - Swagger docs: http://localhost:8000/docs
+# - Health check: http://localhost:8000/health
+# - Celery Flower (optional): http://localhost:5555
 ```
 
 ### Complete Workflow
@@ -47,12 +83,23 @@ python main.py \
   --api-key "xxx"
 ```
 
-**2. Generate tweets:**
+**2. Generate tweets (Content Pool Mode - ⭐ NEW DEFAULT):**
 ```bash
+# Generate by content type distribution (no calendar needed)
 python main.py \
   --persona personas/my_character.json \
   --tweets 10 \
-  --generate-calendar \
+  --api-key "xxx"
+```
+
+**2b. Generate tweets (Calendar Mode - Traditional):**
+```bash
+# Generate by date (requires calendar, use --use-calendar flag)
+python main.py \
+  --persona personas/my_character.json \
+  --calendar calendars/my_character.json \
+  --tweets 10 \
+  --use-calendar \
   --enable-context \
   --api-key "xxx"
 ```
@@ -99,7 +146,32 @@ The persona generation is a **sequential pipeline** that MUST complete in order:
 
 **DO NOT** modify this pipeline without understanding the dependencies between stages.
 
-**3. Context Flow**
+**3. LLM Realism Injection System** ⭐ NEW
+Location: `docs/LLM_REALISM_INJECTION.md`
+
+Real-world photography effects are injected through LLM guidance, NOT post-processing:
+- System prompt contains categorized realism tokens (lighting flaws, motion blur, grain, etc.)
+- LLM intelligently selects 2-4 modifiers based on scene context
+- Scene-aware selection: "messy background" for outdoor, "low lighting" for night scenes
+- Appended to `scene_hint` by LLM: "Morning in bedroom... Raw photo, candid photography, messy background, uneven skin tone"
+
+**Critical**: This approach is superior to PromptEnhancer for flexibility. LLM understands context (e.g., doesn't add "motion blur" to still poses).
+
+**4. PromptEnhancer System** (Legacy/Alternative)
+Location: `core/prompt_enhancer.py`, `config/image_generation.yaml`
+
+Decoupled architecture for model-specific prompt enhancement:
+- Separates semantic `scene_hint` (LLM output) from technical `positive_prompt` (model input)
+- Model-specific: Z-Image (realism tokens) vs SDXL (photography quality tokens)
+- 3-level realism: LOW (minimal), MEDIUM (balanced), HIGH (maximum authenticity)
+- Can be disabled via `image_generation.yaml` to use pure LLM realism injection
+
+**5. Dual Configuration System** ⭐ NEW
+- `generation_config.yaml`: LLM generation params (temperature, max_tokens, persona stages)
+- `image_generation.yaml`: Image model params (realism level, steps, CFG, GPU settings)
+- Both use YAML for easy editing without code changes
+
+**6. Context Flow**
 ```
 main.gather_context()
   → BatchTweetGenerator.generate_batch(context=xxx)
@@ -108,7 +180,7 @@ main.gather_context()
 
 Context includes date/weather and is injected into tweet generation prompts.
 
-**4. Multi-GPU Image Generation**
+**7. Multi-GPU Image Generation**
 Location: `core/image_generator.py`
 
 Uses `torch.multiprocessing` with process pools:
@@ -117,6 +189,31 @@ Uses `torch.multiprocessing` with process pools:
 - LoRA support via Diffusers mode (auto-load/unload to avoid contamination)
 
 ### Key Files and Their Roles
+
+**core/prompt_enhancer.py** ⭐ NEW (Model-specific prompt enhancement)
+- `PromptEnhancer`: Base class for adding model-specific tokens
+- `ZImageEnhancer`: Z-Image-specific realism tokens
+- `SDXLEnhancer`: SDXL-specific photography quality tokens
+- `enhance_prompt()`: Convenience function
+- `create_prompt_enhancer()`: Factory function
+
+**config/image_config.py** ⭐ NEW (Configuration management)
+- Loads `image_generation.yaml`
+- `get_enhancer_from_config()`: Creates PromptEnhancer from YAML settings
+- Preset system: "high_quality", "balanced", "authentic", "sdxl"
+
+**config/image_generation.yaml** ⭐ NEW (Image generation settings)
+- Model selection (Z-Image/SDXL)
+- Realism level (low/medium/high)
+- Generation params (steps, CFG, dimensions)
+- GPU configuration
+- Quick presets for common scenarios
+
+**generation_config.yaml** ⭐ NEW (LLM generation settings)
+- Persona generation stage parameters (temperature, max_tokens for each stage)
+- Tweet generation parameters
+- Default NSFW and language settings
+- Multi-GPU task queue timeouts
 
 **utils/json_parser.py** (Shared JSON parsing utilities)
 - `parse_llm_json_response()`: Unified LLM JSON parsing with fallback strategies
@@ -139,8 +236,16 @@ Uses `torch.multiprocessing` with process pools:
 
 **core/tweet_generator.py** (Tweet generation core)
 - `BatchTweetGenerator.generate_batch()`: Now accepts `context` parameter (refactored to eliminate wrapper)
+- `_build_system_prompt()`: Contains LLM realism injection guidance (see docs/LLM_REALISM_INJECTION.md)
 - Parsing expects exact format: `TWEET: [text]\nSCENE: [description]`
 - If you change output format, update BOTH system prompt AND parser
+
+**api/main.py** ⭐ NEW (FastAPI REST endpoints)
+- `/generate/persona` - Generate persona from uploaded image
+- `/generate/tweets` - Generate tweets for persona
+- `/generate/images` - Generate images from tweet batch
+- `/tasks/{task_id}` - Query async task status
+- Celery integration for background processing
 
 ## Data Formats
 
@@ -200,6 +305,7 @@ These rules are CRITICAL to content quality:
 1. **NO timestamps/dates**: Tweets are pre-generated, must not reference specific times
 2. **Physical sensation over poetry**: Direct bodily feelings over metaphorical language
 3. **Visual specificity**: Scene descriptions must be camera-ready with concrete details (angles, poses, clothing, lighting)
+4. **Realism modifiers**: ALWAYS append 2-4 realism tokens to scene_hint (see LLM Realism Injection)
 
 **DO NOT modify these rules** without understanding their purpose in maintaining quality and avoiding temporal inconsistencies.
 
@@ -213,6 +319,41 @@ All prompts follow **"Show Don't Tell"** methodology:
 Example:
 - ❌ "She is playful and flirty"
 - ✅ "She bites her lower lip while typing, adds extra 'i's to words when excited, ends sentences with '~' when feeling mischievous"
+
+### Configuration Management ⭐ NEW
+
+**Two separate config files with different purposes:**
+
+1. **`generation_config.yaml`** - LLM generation parameters
+   - When to edit: Tuning LLM behavior (temperature, token limits)
+   - Controls: Persona stages, tweet generation, example count
+   - Hot-reload: Yes (no restart needed)
+
+2. **`image_generation.yaml`** - Image model parameters
+   - When to edit: Adjusting image quality/realism
+   - Controls: Model selection, realism level, GPU settings, LoRA
+   - Hot-reload: Yes (no restart needed)
+
+**DO NOT** mix image model settings into `generation_config.yaml` or LLM settings into `image_generation.yaml`.
+
+### Image Generation Approaches
+
+**Two complementary systems for realism:**
+
+1. **LLM Realism Injection** (Recommended, default)
+   - Location: System prompt in `core/tweet_generator.py`
+   - How: LLM adds realism tokens to scene_hint during generation
+   - Pros: Context-aware, flexible, no post-processing
+   - Cons: Requires prompt tuning for new models
+
+2. **PromptEnhancer** (Alternative/Legacy)
+   - Location: `core/prompt_enhancer.py`
+   - How: Post-processes scene_hint with fixed token rules
+   - Pros: Predictable, model-specific optimization
+   - Cons: Less flexible, can add inappropriate tokens
+   - Control: `image_generation.yaml` → `prompt_enhancement.enabled`
+
+**Best Practice**: Use LLM injection for production. PromptEnhancer is useful for A/B testing or when LLM doesn't follow realism guidelines.
 
 ## Performance Tuning
 
@@ -255,10 +396,23 @@ If changing output format, update BOTH system prompt AND parser simultaneously.
 
 ```
 auto-tweet-generator/
-├── main.py                    # Entry point with coordinators
+├── main.py                    # CLI entry point
+├── generation_config.yaml     # ⭐ LLM generation parameters
+├── config/
+│   ├── image_generation.yaml  # ⭐ Image model parameters
+│   ├── image_config.py        # ⭐ Config loader for image generation
+│   ├── settings.py            # Environment variable handling
+│   └── generation.py          # Config loader for LLM generation
+├── api/                       # ⭐ FastAPI REST endpoints
+│   ├── main.py                # API routes
+│   └── models.py              # Pydantic request/response models
+├── tasks/                     # ⭐ Celery background workers
+│   ├── celery_app.py          # Celery configuration
+│   └── generation_tasks.py    # Async generation tasks
 ├── core/                      # Core generation modules
 │   ├── persona_generator.py   # 7-stage persona generation
-│   ├── tweet_generator.py     # Tweet generation
+│   ├── tweet_generator.py     # Tweet generation (with LLM realism injection)
+│   ├── prompt_enhancer.py     # ⭐ Model-specific prompt enhancement
 │   ├── image_generator.py     # Multi-GPU image generation
 │   └── lora_support.py        # LoRA support (placeholder)
 ├── utils/                     # Utility modules
@@ -274,7 +428,20 @@ auto-tweet-generator/
 │   ├── datetime_tool.py       # Date/time with holiday detection
 │   └── weather_tool.py        # OpenWeatherMap API
 ├── tests/                     # Test scripts
+│   ├── test.sh                # Main test runner
+│   └── test_zimage.py         # Z-Image environment test
+├── scripts/                   # Utility scripts
+│   ├── generation/            # Generation scripts
+│   ├── maintenance/           # Maintenance tools
+│   └── setup/                 # Setup scripts
 ├── docs/                      # Documentation
+│   ├── README.md              # Documentation index
+│   ├── guides/                # User guides (setup, workflows)
+│   ├── features/              # ⭐ Feature docs (Content Pool, LLM Realism, PromptEnhancer)
+│   ├── architecture/          # Architecture & design docs
+│   ├── research/              # ⭐ Research reports & analysis
+│   ├── reports/               # Development & test reports
+│   └── writing/               # Writing guides (Chinese)
 ├── personas/                  # Persona JSON files
 ├── calendars/                 # Calendar JSON files
 ├── output_standalone/         # Tweet batch outputs
@@ -282,7 +449,10 @@ auto-tweet-generator/
 ├── image/                     # Test images
 ├── lora/                      # LoRA model symlinks
 ├── Z-Image/                   # Z-Image model (submodule)
-└── legacy/                    # Historical ComfyUI code
+├── legacy/                    # Historical ComfyUI code
+├── .env                       # Environment variables (API keys, etc.)
+├── start_api.sh               # ⭐ Start FastAPI + Celery
+└── requirements.txt           # Python dependencies
 ```
 
 ## Relationship with ComfyUI
@@ -303,3 +473,62 @@ This system is extracted from ComfyUI custom nodes (`comfyui-twitterchat`). The 
 
 **sys.path Manipulation**:
 Multiple files use `sys.path.insert(0, ...)` for imports. While not ideal, this is necessary for the current structure. Consider using relative imports or PYTHONPATH configuration for future refactoring.
+
+## Common Development Patterns
+
+### Adding Realism Tokens to LLM Prompts
+
+When modifying `core/tweet_generator.py:_build_system_prompt()`:
+1. Group tokens by category (quality, authenticity, flaws, camera, lighting, atmosphere)
+2. Provide contextual usage rules (e.g., "night scenes → low lighting")
+3. Show examples with correct format
+4. Test with multiple personas to ensure context-awareness
+
+### Testing New Image Generation Parameters
+
+1. Edit `config/image_generation.yaml` (no code restart needed)
+2. Use presets for quick A/B testing: `balanced`, `authentic`, `high_quality`
+3. Generate test images: `python main.py --generate-images --tweets-batch output_standalone/test_*.json`
+4. Compare outputs in `output_images/`
+
+### Debugging LLM JSON Parsing Failures
+
+If `utils/json_parser.py` fails to parse LLM output:
+1. Check logs for raw response text
+2. Common issues: Extra markdown (```json), unescaped quotes, trailing commas
+3. Add fallback strategy to `parse_llm_json_response()` if pattern is common
+4. Update system prompt to clarify output format if LLM consistently fails
+
+### Adjusting Concurrency for Rate Limits
+
+If hitting API rate limits:
+1. Edit `.env`: `MAX_CONCURRENT=5` (reduce from default 20)
+2. Or use command line: `--max-concurrent 5`
+3. Monitor logs for 429 errors
+4. For local models, can increase to 50+
+
+### Modifying Persona Generation Pipeline
+
+**WARNING**: Stages 1-7 have dependencies. If modifying:
+1. Read `docs/architecture/persona_generation_plan.md` first
+2. Stage order must be preserved (e.g., Stage 3 examples need Stage 2 strategy)
+3. Test with `python main.py --generate-persona --image test.png`
+4. Verify JSON output contains all required fields for downstream tweet generation
+
+### Working with LoRA Models
+
+LoRA configuration is in persona JSON under `extensions.lora_config`:
+```json
+{
+  "extensions": {
+    "lora_config": {
+      "model_path": "lora/character_name.safetensors",
+      "strength": 0.8
+    }
+  }
+}
+```
+
+To add LoRA to existing personas:
+- Use script: `python scripts/maintenance/update_lora_in_tweets.py`
+- Or edit manually following SillyTavern V2 schema

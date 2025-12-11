@@ -1,0 +1,95 @@
+# Archetype Templates - 人设原型模板
+# 定义不同类型创作者的内容分布策略
+
+archetypes:
+  ABG:
+    name: "Asian Baby Girl"
+    description: "Confident, westernized Asian aesthetic with street style and fitness blend"
+    style_notes: "Heavy contour, blonde highlights, athleisure, bad bitch energy"
+
+    default_distribution:
+      gym_workout: 0.25
+      bedroom_intimate: 0.30
+      outdoor_casual: 0.20
+      mirror_selfie: 0.15
+      casual_selfie: 0.10
+
+    mood_weights:
+      confident: 0.40
+      playful: 0.30
+      sultry: 0.20
+      teasing: 0.10
+
+  "Gym Girl":
+    name: "Fitness Content Creator"
+    description: "Fitness-focused lifestyle with emphasis on workout content and healthy living"
+    style_notes: "Athletic wear, visible muscle definition, gym setting dominance"
+
+    default_distribution:
+      gym_workout: 0.40
+      outdoor_casual: 0.10
+      bedroom_intimate: 0.15
+      mirror_selfie: 0.25
+      casual_selfie: 0.10
+
+    mood_weights:
+      determined: 0.35
+      confident: 0.30
+      proud: 0.20
+      playful: 0.15
+
+  E-girl:
+    name: "Gamer/E-girl Aesthetic"
+    description: "Gaming and anime-inspired aesthetic with playful nerdy vibe"
+    style_notes: "Cat ear headphones, RGB lighting, thigh-highs, winged eyeliner"
+
+    default_distribution:
+      e_girl_gaming: 0.40
+      bedroom_intimate: 0.30
+      mirror_selfie: 0.20
+      outdoor_casual: 0.10
+
+    mood_weights:
+      playful: 0.40
+      cute: 0.30
+      sultry: 0.20
+      confident: 0.10
+
+  "Girl Next Door":
+    name: "Approachable Natural Beauty"
+    description: "Casual, relatable content with emphasis on natural beauty and everyday moments"
+    style_notes: "Minimal makeup, casual outfits, natural lighting, authentic feel"
+
+    default_distribution:
+      casual_selfie: 0.30
+      outdoor_casual: 0.25
+      bedroom_intimate: 0.20
+      mirror_selfie: 0.15
+      coffee_shop: 0.10
+
+    mood_weights:
+      relaxed: 0.35
+      playful: 0.30
+      confident: 0.20
+      sultry: 0.15
+
+  Baddie:
+    name: "High Glam Baddie"
+    description: "High-fashion streetwear with bold makeup and confident energy"
+    style_notes: "Full glam makeup, designer pieces, bold poses, luxury settings"
+
+    default_distribution:
+      mirror_selfie: 0.30
+      outdoor_casual: 0.25
+      bedroom_intimate: 0.25
+      car_selfie: 0.10
+      nightlife: 0.10
+
+    mood_weights:
+      confident: 0.50
+      sultry: 0.25
+      assertive: 0.15
+      playful: 0.10
+
+# Default fallback if archetype not specified
+default_archetype: "ABG"

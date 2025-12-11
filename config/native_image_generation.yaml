@@ -1,0 +1,73 @@
+# Native Image Generation Configuration
+
+model:
+  # Z-Image模型路径
+  unet_path: "Z-Image/ckpts/Z-Image-Turbo"  # Z-Image原生模型目录
+  vae_path: "models/ae.safetensors"
+  clip_path: "models/qwen_3_4b.safetensors"
+
+  # 推理配置
+  torch_dtype: "bfloat16"  # bfloat16, float16, float32
+  device: "cuda"  # Use default GPU
+  enable_model_cpu_offload: false
+  enable_attention_slicing: false
+  enable_vae_slicing: false
+
+generation:
+  # 默认生成模式
+  progressive: true  # true=三阶段渐进式, false=单阶段直接生成
+
+  # 单阶段生成参数
+  single_stage:
+    height: 864
+    width: 672
+    num_inference_steps: 20
+    guidance_scale: 3.5
+
+  # 三阶段渐进式生成参数
+  progressive_stages:
+    stage1:
+      height: 224
+      width: 176
+      num_inference_steps: 9
+      guidance_scale: 2.0
+      scheduler: "FlowMatchEulerDiscrete"
+      scheduler_config:
+        num_train_timesteps: 1000
+        shift: 3.0
+
+    stage2:
+      height: 432
+      width: 336
+      num_inference_steps: 16
+      guidance_scale: 1.0
+      strength: 0.7  # denoise strength for img2img
+      upscale_mode: "nearest-exact"
+      scheduler: "FlowMatchEulerDiscrete"
+
+    stage3:
+      height: 864
+      width: 672
+      num_inference_steps: 16
+      guidance_scale: 1.0
+      strength: 0.6
+      upscale_mode: "nearest-exact"
+      scheduler: "beta"
+
+lora:
+  # LoRA配置
+  default_strength: 0.8
+  cache_dir: "lora"
+  auto_unload: true  # 生成完成后自动卸载LoRA
+
+performance:
+  # 性能优化
+  compile_unet: false  # torch.compile加速 (需要PyTorch 2.0+)
+  use_flash_attention: false  # Flash Attention 2.0
+  enable_xformers: true  # xFormers memory efficient attention
+
+output:
+  # 输出配置
+  format: "PNG"
+  quality: 95  # JPEG quality (if format=JPEG)
+  save_metadata: true  # 保存生成参数到图片metadata

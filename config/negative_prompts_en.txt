@@ -1,0 +1,27 @@
+# English Negative Prompt Template
+# Source: Translated from ComfyUI workflow/zimage-121101.json
+# Purpose: Exclude unrealistic AI generation artifacts, enhance photo realism
+
+# Art Styles to Exclude
+anime style, 2D, manga style, illustration style, cartoon style, chibi, hand-drawn style, watercolor painting, sketch style, line art, draft, realistic oil painting, oil painting style, print style, pixel art, low poly, voxel, blueprint, wireframe, 3D rendering, 3D model, CG rendering, CG style, game model, game character, virtual avatar, vtuber style, cyberpunk, vaporwave, synthwave, glitch art, neon cyberpunk style,
+
+# Technical Defects
+low resolution, blurry, out of focus, defocused, distorted, excessive noise, JPEG artifacts, compression artifacts, over-compressed, color bleeding, color banding, severe color cast, over-sharpened, over-denoised, excessive HDR, HDR style, lens flare, edge glow, overexposed highlights, crushed blacks, glowing contours, glowing edges, jagged edges, rough details, unrealistic lighting, unrealistic reflections, unrealistic shadows,
+
+# AI Face Artifacts
+influencer face, AI influencer face, template face, default face template, generic face, cookie-cutter faces, identical faces, same face, uniform facial features, standardized face, perfectly symmetrical face, golden ratio face, flawless face, artificially perfect face, fake delicate face, uniform oval face, uniform pointed chin, uniform high nose bridge, uniform double eyelids, doll face, Barbie face, fake doll face, excessively youthful face, unnaturally childlike face, uniform goddess face, divine beauty template,
+
+# Beauty Filter Artifacts
+beauty filter, excessive skin smoothing, over-smoothed skin, smoothing filter, glass skin, porcelain skin, "perfect skin", excessively whitened skin, overexposed skin highlights, distorted skin, unrealistic skin texture, fake skin texture, plastic-looking skin, waxy face, fake face, fake skin, over-retouched, excessive liquify, liquify distortion, retouching artifacts, excessively thinned face, excessively sharpened face, excessively enlarged eyes, unrealistic facial proportions, unrealistic body proportions, obvious Photoshop traces, excessive filters,
+
+# Studio/Commercial Photography Artifacts
+studio style, portrait studio style, studio lighting, studio retouching, "glamour shots", studio glamour shots, magazine cover style, fashion magazine studio style, glamour photography, idol poster, idol promo, influencer profile photo, influencer style, streamer face, live stream face, live stream filter, commercial headshot, strong advertising feel, stock photo template style, excessive fashion editorial feel, exaggerated studio feel, excessive luxury feel, uniform poster style, generic advertising model feel,
+
+# Selfie Artifacts
+selfie style, selfie feel, selfie stick perspective, front-facing phone camera, close-up wide-angle distortion, big head distortion, fisheye distortion, ultra-wide-angle distortion, overhead phone angle, extreme low-angle distortion, live stream filter, selfie filter, beauty camera, influencer selfie, selfie beautification, TikTok filter, social media influencer filter, uniform influencer selfie template,
+
+# Stock Photo Artifacts
+stock photo, stock photo feel, typical stock photo, generic stock model, stock photo library style, cookie-cutter stock models, overly deliberate posing, stiff posture, stiff expression, plastic smile, fake smile, fake expression, zombie face, stiff eyes, excessively posed, uniform posture, repetitive poses, uniform composition, advertising template, generic poster background, generic advertising background, template background,
+
+# General AI Artifacts
+strong AI feel, obviously AI-generated, artificial traces, unnatural, fake background, fake depth of field, excessive depth of field blur, messy background, low quality, low detail, sloppy details, unrealistic, non-photographic, non-photography, non-natural lighting, fake light source, unnatural highlights, over-sharpened edges, harsh contours, harsh edges, unclean contours, blocky noise, simulated style rather than actual photography

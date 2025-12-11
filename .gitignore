@@ -57,6 +57,8 @@ personas/archived/*.json
 
 # 日志
 *.log
+logs/*.log
+logs/*.txt
 
 # 模型文件
 *.safetensors

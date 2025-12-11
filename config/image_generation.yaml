@@ -1,0 +1,141 @@
+# 图片生成配置
+
+# 生成模式选择
+generation_mode: "advanced"  # "advanced" (优化方案，三阶段渐进式) | "simple" (备用方案，单阶段生成)
+
+# 模型配置
+model:
+  type: "z-image"  # "z-image" | "sdxl"
+  path: "Z-Image/ckpts/Z-Image-Turbo"
+
+# 提示词增强配置
+prompt_enhancement:
+  enabled: false  # 已关闭：完全依赖 LLM 在 scene_hint 中生成的真实感修饰词，避免与技术性画质词冲突
+
+  # 真实感配置（已禁用，保留配置供参考）
+  realism:
+    enabled: false        # 是否启用真实感增强
+    level: "medium"       # 真实感级别: "low" | "medium" | "high"
+    variation: true       # 是否启用随机变化（增加多样性）
+
+  # 级别说明：
+  # - low: 保守，只添加基础真实感词（Raw photo, authentic snapshot）
+  #        适合：首次测试，追求高质量
+  #
+  # - medium: 推荐，平衡真实感和质量
+  #        添加：Raw photo, candid photography, messy background,
+  #             uneven skin tone, Chromatic aberration,
+  #             smartphone camera aesthetic, low lighting (contextual)
+  #        适合：生产环境，大部分场景
+  #
+  # - high: 激进，最大化真实感
+  #        添加：所有medium级词汇 + motion blur, slightly out of focus,
+  #             GoPro lens, overexposed, underexposed, in motion,
+  #             eerie atmosphere (contextual)
+  #        适合：追求极致真实感，可接受部分质量牺牲
+
+# 生成参数（Z-Image推荐值）
+generation:
+  width: 768           # 图片宽度
+  height: 1024         # 图片高度
+  steps: 9             # 推理步数（Z-Image-Turbo推荐8-9）
+  cfg: 1.0             # CFG scale（Z-Image-Turbo推荐0.0-1.0）
+
+# 高级生成模式配置（三阶段渐进式，基于 ComfyUI workflow）
+advanced_generation:
+  # 负向提示词
+  negative_prompt:
+    enabled: true
+    template_file: "config/negative_prompts_en.txt"  # 使用英文模板（也可以用 negative_prompts_zh.txt）
+
+  # 三阶段配置（Latent 空间尺寸，最终输出 768×1024）
+  progressive:
+    # 阶段1: 基础生成（低分辨率 latent）
+    stage1:
+      latent_size: [85, 64]  # [H, W] latent 空间 → 680×512 像素
+      steps: 9
+      cfg: 2.0           # 基础阶段使用较高 CFG
+
+    # 阶段2: 中间精修（中分辨率 latent）
+    stage2:
+      latent_size: [106, 79]  # [H, W] latent 空间 → 848×632 像素
+      steps: 16
+      cfg: 1.0
+      denoise: 0.7       # 重绘强度（保留 30% 原始内容）
+
+    # 阶段3: 最终精修（高分辨率 latent）
+    stage3:
+      # latent_size 由 generation.width/height 自动计算（÷8）
+      steps: 16
+      cfg: 1.0
+      denoise: 0.6       # 重绘强度（保留 40% 原始内容）
+
+# GPU配置
+gpu:
+  device: "cuda"       # "cuda" | "cpu" | "mps"
+  num_gpus: null       # 使用GPU数量（null=自动检测全部）
+  use_multi_gpu: true  # 是否启用多GPU并发
+
+# LoRA配置
+lora:
+  enabled: true        # 是否启用LoRA
+  default_strength: 0.8  # 默认LoRA强度
+
+# 输出配置
+output:
+  dir: "output_images"  # 输出目录
+  format: "png"         # 输出格式
+  name_pattern: "{persona}_{day}_slot{slot}_{timestamp}"  # 文件命名模式
+
+# 实验性功能
+experimental:
+  # 自定义真实感词库（覆盖默认值）
+  custom_realism_tokens:
+    quality: []         # 自定义质量词
+    authenticity: []    # 自定义真实感词
+    flaws: []           # 自定义瑕疵词
+    camera: []          # 自定义相机词
+    lighting: []        # 自定义光照词
+    atmosphere: []      # 自定义氛围词
+
+# 快速配置预设
+presets:
+  # 高质量模式（minimal realism）
+  high_quality:
+    prompt_enhancement:
+      realism:
+        level: "low"
+        variation: false
+    generation:
+      steps: 12
+
+  # 平衡模式（推荐）
+  balanced:
+    prompt_enhancement:
+      realism:
+        level: "medium"
+        variation: true
+    generation:
+      steps: 9
+
+  # 真实感模式（maximum realism）
+  authentic:
+    prompt_enhancement:
+      realism:
+        level: "high"
+        variation: true
+    generation:
+      steps: 9
+
+  # SDXL模式
+  sdxl:
+    model:
+      type: "sdxl"
+    prompt_enhancement:
+      realism:
+        level: "medium"
+    generation:
+      width: 1024
+      height: 1024
+      steps: 30
+      cfg: 7.0

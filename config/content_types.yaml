@@ -1,0 +1,436 @@
+# Content Types Configuration
+# 定义每种内容类型的子类型和变化维度，确保足够诱惑和多样性
+
+content_types:
+
+  # ========== 健身房内容 ==========
+  gym_workout:
+    description: "Gym/fitness workout content - emphasize curves and athletic sexuality"
+
+    subtypes:
+      squat_rack:
+        weight: 0.20
+        description: "Doing squats - emphasize glutes and thighs"
+        key_elements:
+          - "barbell on shoulders or bodyweight squat"
+          - "deep squat position emphasizing glute muscles"
+          - "leggings stretched tight showing curves"
+
+      cable_machine:
+        weight: 0.15
+        description: "Using cable machine - show body extension and curves"
+        key_elements:
+          - "pulling cable with arched back"
+          - "side profile showing waist-hip ratio"
+          - "tight clothing showing muscle definition"
+
+      gym_mirror_selfie:
+        weight: 0.30
+        description: "Mirror selfie showing physique - most versatile and sexy"
+        key_elements:
+          - "phone visible in hand"
+          - "direct confident gaze into mirror"
+          - "showing off body in gym outfit"
+
+      post_workout_rest:
+        weight: 0.15
+        description: "Resting after workout - show exhaustion and sweat (sexy)"
+        key_elements:
+          - "sitting or leaning, catching breath"
+          - "visible sweat sheen on skin"
+          - "towel, water bottle nearby"
+
+      stretching:
+        weight: 0.20
+        description: "Stretching/flexibility - emphasize flexibility and curves"
+        key_elements:
+          - "flexible poses showing body lines"
+          - "yoga mat or stretching area"
+          - "body extension emphasizing curves"
+
+    variations:
+      camera_angle:
+        - "mirror selfie from front"
+        - "side profile showing curves and form"
+        - "from behind emphasizing glutes and back"
+        - "low angle from floor (powerful perspective)"
+        - "close-up upper body showing sweat and expression"
+        - "full body shot showing legs and physique"
+
+      clothing:
+        - "black leggings + purple sports bra"
+        - "grey yoga pants + cropped white tank"
+        - "bike shorts + loose tank top (showing underboob)"
+        - "matching gym set (coordinated color)"
+        - "oversized t-shirt tied up + shorts"
+        - "high-waisted leggings + strappy sports bra"
+
+      time_of_day:
+        - "early morning (empty gym, harsh fluorescent lighting)"
+        - "afternoon (crowded, natural window light)"
+        - "evening (golden hour through windows)"
+        - "late night (dim lighting, few people, intimate)"
+
+      mood:
+        - "determined and focused"
+        - "exhausted but proud (post-workout glow)"
+        - "playful and energetic"
+        - "sultry and showing off gains"
+        - "confident and powerful"
+
+      pose_detail:
+        - "mid-rep with weights"
+        - "resting between sets with towel"
+        - "flexing muscles confidently"
+        - "adjusting outfit (pulling up leggings)"
+        - "drinking from water bottle"
+        - "wiping sweat from neck and chest"
+
+  # ========== 卧室私密内容 ==========
+  bedroom_intimate:
+    description: "Intimate bedroom content - most sensual and alluring"
+
+    subtypes:
+      bed_sitting:
+        weight: 0.25
+        description: "Sitting on edge of bed - accessible and inviting"
+        key_elements:
+          - "sitting on edge of unmade bed"
+          - "legs crossed or slightly apart"
+          - "direct gaze or looking down seductively"
+
+      bed_lying:
+        weight: 0.25
+        description: "Lying on bed - vulnerable and sensual"
+        key_elements:
+          - "lying on stomach, side, or back"
+          - "sheets partially covering body"
+          - "relaxed sensual pose"
+
+      floor_kneeling:
+        weight: 0.15
+        description: "Kneeling on floor/carpet - submissive appeal"
+        key_elements:
+          - "kneeling beside bed or on carpet"
+          - "looking up at camera or down"
+          - "hands on thighs or behind back"
+
+      window_standing:
+        weight: 0.15
+        description: "Standing by window - natural light and silhouette"
+        key_elements:
+          - "standing near window with curtains"
+          - "natural morning or evening light"
+          - "silhouette or backlit effect"
+
+      mirror_selfie:
+        weight: 0.20
+        description: "Bedroom mirror selfie - casual intimate"
+        key_elements:
+          - "phone in hand taking mirror pic"
+          - "bedroom visible in background"
+          - "casual outfit or getting dressed/undressed"
+
+    variations:
+      lighting:
+        - "dim purple LED strips behind bed"
+        - "warm golden bedside lamp (intimate)"
+        - "natural morning sunlight through window (soft)"
+        - "blue-tinted evening light (moody)"
+        - "ring light for selfie (bright and clear)"
+        - "candlelight (romantic and sensual)"
+
+      clothing:
+        - "oversized t-shirt and panties (boyfriend shirt vibe)"
+        - "black lace lingerie set (classic sexy)"
+        - "silk robe half-open showing skin"
+        - "sports bra and shorts (casual intimate)"
+        - "boyfriend's hoodie and thigh-highs (cute sexy)"
+        - "white cotton panties and tank top (innocent sexy)"
+        - "satin slip dress (elegant sensual)"
+
+      camera_angle:
+        - "close-up from above looking down"
+        - "mirror selfie from phone in hand"
+        - "side profile lying on bed"
+        - "full body from doorway or foot of bed"
+        - "over-the-shoulder back view"
+        - "low angle from floor looking up"
+
+      action:
+        - "stretching arms above head (exposing body)"
+        - "playing with hair seductively"
+        - "adjusting straps or outfit"
+        - "looking at phone (distracted casual)"
+        - "biting lip or finger"
+        - "touching neck or collarbone"
+        - "pulling covers up or pushing down"
+
+      mood:
+        - "sultry and inviting"
+        - "playful and teasing"
+        - "vulnerable and soft"
+        - "confident and assertive"
+        - "sleepy and lazy (morning vibe)"
+
+  # ========== 户外休闲内容 ==========
+  outdoor_casual:
+    description: "Outdoor casual lifestyle - natural and approachable but still sexy"
+
+    subtypes:
+      street_casual:
+        weight: 0.30
+        description: "Walking on street or urban setting"
+        key_elements:
+          - "city street, sidewalk, or urban backdrop"
+          - "casual street outfit"
+          - "natural outdoor lighting"
+
+      cafe_sitting:
+        weight: 0.25
+        description: "Sitting at cafe or restaurant"
+        key_elements:
+          - "outdoor cafe table with coffee or food"
+          - "sitting casually but posed"
+          - "bright natural daylight"
+
+      beach_pool:
+        weight: 0.20
+        description: "Beach or pool setting - swimsuit content"
+        key_elements:
+          - "bikini or one-piece swimsuit"
+          - "water, sand, or pool visible"
+          - "sun-kissed golden hour lighting"
+
+      park_nature:
+        weight: 0.15
+        description: "Park or natural outdoor setting"
+        key_elements:
+          - "greenery, trees, grass in background"
+          - "sitting or standing in nature"
+          - "casual relaxed outfit"
+
+      car_exterior:
+        weight: 0.10
+        description: "Leaning against car or outdoor with vehicle"
+        key_elements:
+          - "leaning against car door or sitting on hood"
+          - "car visible in shot"
+          - "urban or parking lot setting"
+
+    variations:
+      clothing:
+        - "sundress or flowy dress (feminine)"
+        - "crop top and high-waisted jeans (casual sexy)"
+        - "bikini or swimsuit (beach/pool)"
+        - "tight bodycon dress (going out)"
+        - "oversized hoodie and bike shorts (athleisure)"
+        - "tank top and denim shorts (summer casual)"
+
+      time_of_day:
+        - "golden hour afternoon (warm glow)"
+        - "bright midday sun (vibrant)"
+        - "sunset evening (romantic)"
+        - "overcast soft light (moody)"
+
+      pose:
+        - "walking toward camera"
+        - "sitting on bench or ledge"
+        - "leaning against wall or car"
+        - "standing with hand on hip"
+        - "looking over shoulder"
+        - "adjusting sunglasses or hair"
+
+      mood:
+        - "carefree and relaxed"
+        - "confident and assertive"
+        - "playful and flirty"
+        - "sultry and seductive"
+
+  # ========== 镜子自拍 ==========
+  mirror_selfie:
+    description: "Mirror selfie - versatile and intimate, anywhere with mirror"
+
+    subtypes:
+      bathroom_mirror:
+        weight: 0.35
+        description: "Bathroom mirror selfie - most common and intimate"
+        key_elements:
+          - "bathroom mirror, sink visible"
+          - "phone in hand"
+          - "casual or getting ready outfit"
+
+      bedroom_mirror:
+        weight: 0.30
+        description: "Bedroom full-length mirror"
+        key_elements:
+          - "full-length mirror showing whole body"
+          - "bedroom background"
+          - "outfit of the day or lingerie"
+
+      gym_mirror:
+        weight: 0.20
+        description: "Gym mirror (crossover with gym_workout)"
+        key_elements:
+          - "gym equipment in background"
+          - "workout outfit"
+          - "showing physique or outfit"
+
+      fitting_room:
+        weight: 0.15
+        description: "Store fitting room mirror - trying on clothes"
+        key_elements:
+          - "fitting room lighting and background"
+          - "trying on outfit"
+          - "casual shopping vibe"
+
+    variations:
+      outfit:
+        - "lingerie or underwear (most intimate)"
+        - "towel wrapped after shower (vulnerable)"
+        - "outfit of the day (casual)"
+        - "gym outfit (athletic sexy)"
+        - "going out dress (glam)"
+        - "pajamas or sleepwear (cozy intimate)"
+
+      pose:
+        - "straight-on full body"
+        - "turned to show side profile and curves"
+        - "sitting or kneeling on floor"
+        - "one hand on hip, other holding phone"
+        - "pulling up shirt to show stomach"
+        - "adjusting outfit or hair"
+
+      mood:
+        - "confident showing off outfit"
+        - "playful and casual"
+        - "sultry and seductive"
+        - "vulnerable and intimate"
+
+  # ========== E-girl游戏内容 ==========
+  e_girl_gaming:
+    description: "E-girl/gamer aesthetic - playful nerdy but still sexy"
+
+    subtypes:
+      gaming_desk:
+        weight: 0.40
+        description: "At gaming desk with setup visible"
+        key_elements:
+          - "RGB keyboard and monitor visible"
+          - "cat ear headphones"
+          - "colorful LED lighting in background"
+
+      bedroom_egirl:
+        weight: 0.35
+        description: "E-girl bedroom aesthetic"
+        key_elements:
+          - "anime posters on wall"
+          - "LED strip lights (pink/purple/blue)"
+          - "plushies or nerdy decor visible"
+
+      cosplay_partial:
+        weight: 0.25
+        description: "Partial cosplay or costume elements"
+        key_elements:
+          - "anime character outfit pieces"
+          - "wigs or costume accessories"
+          - "playful nerdy vibe"
+
+    variations:
+      clothing:
+        - "oversized hoodie and pleated skirt"
+        - "crop top and thigh-high socks"
+        - "anime graphic tee and shorts"
+        - "cosplay outfit or pieces"
+        - "oversized band tee as dress"
+
+      props:
+        - "cat ear headphones (essential)"
+        - "gaming controller in hand"
+        - "anime figurines visible"
+        - "plushies in background"
+        - "RGB lighting setup"
+
+      expression:
+        - "playful tongue out (ahegao-lite)"
+        - "peace sign near face"
+        - "surprised wide eyes"
+        - "winking and smiling"
+        - "focused on screen"
+
+      mood:
+        - "playful and cute"
+        - "nerdy and relatable"
+        - "sultry but playful"
+        - "energetic and fun"
+
+  # ========== 日常自拍 ==========
+  casual_selfie:
+    description: "Casual selfie anywhere - versatile everyday content"
+
+    subtypes:
+      close_up_selfie:
+        weight: 0.40
+        description: "Close-up face and upper body selfie"
+        key_elements:
+          - "phone or camera close to face"
+          - "face and shoulders visible"
+          - "casual anywhere setting"
+
+      car_selfie:
+        weight: 0.30
+        description: "Selfie in car (very popular format)"
+        key_elements:
+          - "sitting in car driver or passenger seat"
+          - "seatbelt visible"
+          - "car interior in background"
+
+      couch_home:
+        weight: 0.30
+        description: "Relaxing at home on couch or bed"
+        key_elements:
+          - "casual home setting"
+          - "comfortable relaxed pose"
+          - "natural or indoor lighting"
+
+    variations:
+      angle:
+        - "high angle from above (slimming)"
+        - "straight on at eye level"
+        - "low angle from below (powerful)"
+        - "side profile showing face shape"
+
+      expression:
+        - "slight smile and direct gaze"
+        - "serious sultry look"
+        - "playful tongue out or wink"
+        - "peaceful relaxed expression"
+
+      outfit:
+        - "casual t-shirt or hoodie"
+        - "tank top or crop top"
+        - "off-shoulder top"
+        - "whatever currently wearing"
+
+# 全局变化因素（所有类型通用）
+global_variations:
+  skin_tone_description:
+    - "sun-kissed golden tan skin"
+    - "warm honey-toned skin with healthy glow"
+    - "bronze tan skin with dewy sheen"
+    - "warm caramel skin tone"
+    - "lightly tanned glowing skin"
+
+  body_language_confidence:
+    - "direct confident gaze into camera"
+    - "shoulders back, spine straight, confident posture"
+    - "one hand on hip, assertive stance"
+    - "arched back emphasizing curves"
+    - "legs slightly apart, grounded confident stance"
+
+  expression_intensity:
+    - "bedroom eyes with slight smirk"
+    - "playful teasing expression"
+    - "sultry intense gaze"
+    - "confident knowing smile"
+    - "parted lips, inviting expression"

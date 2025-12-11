@@ -229,7 +229,14 @@ OUTPUT FORMAT:
   }}
 }}
 
-CRITICAL: Content types must be SPECIFIC to this persona, not generic."""
+CRITICAL GUIDELINES:
+1. Content types must be SPECIFIC to this persona, not generic
+2. **IMPORTANT**: Mirror selfies (especially iPhone selfies in bathroom/bedroom) perform extremely well and should be heavily weighted (20-30%)
+3. Include variations like:
+   - "bathroom_mirror_selfie" or "bedroom_mirror_selfie" - showing off outfit/body
+   - "gym_mirror_selfie" - post-workout physique shots
+   - "fitting_room_selfie" - trying on clothes
+4. Mirror selfies are versatile and work for almost any persona - they're casual, authentic, and high-engagement"""
 
         messages = [
             {"role": "system", "content": system_prompt},

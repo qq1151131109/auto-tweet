@@ -352,13 +352,25 @@ Must output valid JSON format:
     async def generate_tweets_for_persona(
         self,
         persona_file: str,
-        calendar_file: str,
+        calendar_file: str = None,
         tweets_count: int = 5,
         temperature: float = 1.0,
         auto_generate_calendar: bool = False,
-        enable_context: bool = False
+        enable_context: bool = False,
+        use_content_pool: bool = False
     ) -> Dict:
-        """为单个人设生成推文"""
+        """
+        为单个人设生成推文
+
+        Args:
+            persona_file: 人设文件路径
+            calendar_file: 日历文件路径（可选，如果use_content_pool=True则不需要）
+            tweets_count: 推文数量
+            temperature: 温度参数
+            auto_generate_calendar: 是否自动生成calendar
+            enable_context: 是否启用上下文
+            use_content_pool: 是否使用内容池模式（按类别生成）
+        """
         logger.info(f"\n{'='*70}")
         logger.info(f"📝 生成推文: {Path(persona_file).stem}")
         logger.info(f"{'='*70}\n")
@@ -368,31 +380,90 @@ Must output valid JSON format:
         # 加载数据
         persona = await self.load_persona(persona_file)
 
-        # ⭐ 自动生成calendar（如果需要）
-        if auto_generate_calendar:
-            calendar = await self.generate_calendar_if_needed(
-                persona, calendar_file, days_to_generate=15
+        # ⭐ 内容池模式（按类别生成）
+        if use_content_pool:
+            logger.info(f"  🎯 使用内容池模式（按类别生成）")
+            logger.info(f"  📊 目标推文数: {tweets_count}\n")
+
+            # 确保persona有content_strategy
+            persona_data = persona.get('data', {})
+            extensions = persona_data.get('extensions', {})
+
+            if 'content_strategy' not in extensions:
+                logger.info(f"  ⚠️  persona缺少content_strategy，自动添加...")
+                # 从描述推断archetype
+                description = persona_data.get('description', '').lower()
+                personality = persona_data.get('personality', '').lower()
+
+                if 'fitness' in description or 'gym' in description:
+                    archetype = "Gym Girl"
+                elif 'gamer' in description or 'e-girl' in description:
+                    archetype = "E-girl"
+                elif 'baddie' in personality or 'assertive' in personality:
+                    archetype = "Baddie"
+                else:
+                    archetype = "ABG"  # 默认
+
+                if 'extensions' not in persona['data']:
+                    persona['data']['extensions'] = {}
+
+                persona['data']['extensions']['content_strategy'] = {
+                    "archetype": archetype
+                }
+
+                # 保存回文件
+                with open(persona_file, 'w', encoding='utf-8') as f:
+                    json.dump(persona, f, ensure_ascii=False, indent=2)
+
+                logger.info(f"  ✓ 添加了 content_strategy (archetype: {archetype})\n")
+
+            # 使用generate_pool方法
+            tweets_batch = await self.tweet_generator.generate_pool(
+                persona=persona,
+                count=tweets_count,
+                temperature=temperature,
+                explicit_nudity_allowed=(persona_data.get('nsfw_level') == 'enabled')
             )
+
+            # 显示内容分布
+            logger.info(f"\n  📊 内容分布:")
+            for content_type, count in tweets_batch['content_plan']['distribution'].items():
+                logger.info(f"     {content_type}: {count} 条")
+            logger.info("")
+
         else:
-            calendar = await self.load_calendar(calendar_file)
+            # ⭐ 传统calendar模式（按日期生成）
+            logger.info(f"  📅 使用Calendar模式（按日期生成）")
 
-        # ⭐ 收集上下文（如果启用）
-        context = None
-        if enable_context:
-            context = self.gather_context(persona)
-            logger.info(f"  📅 日期: {context.get('date', {}).get('formatted', 'N/A')}")
-            if 'weather' in context:
-                weather_formatted = context['weather'].get('formatted', 'N/A')
-                logger.info(f"  🌤️  天气: {weather_formatted}")
+            if not calendar_file:
+                logger.error("  ❌ Calendar模式需要 --calendar 参数")
+                raise ValueError("Calendar模式需要提供calendar_file参数")
 
-        # ⭐ 生成推文（直接使用BatchTweetGenerator，传递context）
-        tweets_batch = await self.tweet_generator.generate_batch(
-            persona=persona,
-            calendar=calendar,
-            tweets_count=tweets_count,
-            temperature=temperature,
-            context=context  # 直接传递context
-        )
+            # 自动生成calendar（如果需要）
+            if auto_generate_calendar:
+                calendar = await self.generate_calendar_if_needed(
+                    persona, calendar_file, days_to_generate=15
+                )
+            else:
+                calendar = await self.load_calendar(calendar_file)
+
+            # 收集上下文（如果启用）
+            context = None
+            if enable_context:
+                context = self.gather_context(persona)
+                logger.info(f"  📅 日期: {context.get('date', {}).get('formatted', 'N/A')}")
+                if 'weather' in context:
+                    weather_formatted = context['weather'].get('formatted', 'N/A')
+                    logger.info(f"  🌤️  天气: {weather_formatted}")
+
+            # 生成推文
+            tweets_batch = await self.tweet_generator.generate_batch(
+                persona=persona,
+                calendar=calendar,
+                tweets_count=tweets_count,
+                temperature=temperature,
+                context=context
+            )
 
         # 保存结果
         persona_name = persona["data"]["name"]
@@ -602,13 +673,24 @@ async def main():
     )
     parser.add_argument(
         "--calendar",
-        help="日历JSON文件路径"
+        help="日历JSON文件路径（可选，如果使用--use-content-pool则不需要）"
     )
     parser.add_argument(
         "--tweets",
         type=int,
         default=5,
         help="要生成的推文数量（默认5）"
+    )
+    # ⭐ 内容池模式（按类别生成，默认模式）
+    parser.add_argument(
+        "--use-content-pool",
+        action="store_true",
+        help="使用内容池模式（按类别生成推文，不需要calendar）- 推荐使用"
+    )
+    parser.add_argument(
+        "--use-calendar",
+        action="store_true",
+        help="强制使用Calendar模式（按日期生成推文，需要--calendar参数）"
     )
     parser.add_argument(
         "--api-key",
@@ -812,32 +894,37 @@ async def main():
         return
 
     # 推文生成模式
-    if not args.persona or not args.calendar:
-        parser.error("推文生成模式需要 --persona 和 --calendar 参数")
+    if args.persona:
+        # 判断使用哪种模式
+        # 默认: 如果没有指定--use-calendar且没有--calendar，使用内容池模式
+        # 显式: 如果指定了--use-content-pool，使用内容池模式
+        # 显式: 如果指定了--use-calendar，使用calendar模式（需要--calendar参数）
 
-    # 运行
-    if args.batch_mode:
-        if not args.personas or not args.calendars:
-            parser.error("批量模式需要 --personas 和 --calendars")
+        use_content_pool = args.use_content_pool or (not args.use_calendar and not args.calendar)
 
-        if len(args.personas) != len(args.calendars):
-            parser.error("人设和日历文件数量必须相同")
+        if args.batch_mode:
+            logger.error("❌ 批量模式暂不支持，请使用单个persona生成")
+            return
 
-        await coordinator.generate_batch_tweets(
-            persona_files=args.personas,
-            calendar_files=args.calendars,
-            tweets_per_persona=args.tweets,
-            temperature=args.temperature
-        )
-    else:
         await coordinator.generate_tweets_for_persona(
             persona_file=args.persona,
             calendar_file=args.calendar,
             tweets_count=args.tweets,
             temperature=args.temperature,
-            auto_generate_calendar=args.generate_calendar,  # ⭐ 传递auto-generate选项
-            enable_context=args.enable_context  # ⭐ 传递context选项
+            auto_generate_calendar=args.generate_calendar,
+            enable_context=args.enable_context,
+            use_content_pool=use_content_pool
         )
+        return
+
+    # 如果没有指定persona，检查是否是其他模式
+    if not args.generate_persona and not args.generate_images:
+        parser.print_help()
+        print("\n💡 推荐使用方式:")
+        print("   1. 生成人设: python main.py --generate-persona --image xxx.jpg")
+        print("   2. 生成推文（按类别）: python main.py --persona personas/xxx.json --tweets 10")
+        print("   3. 生成推文（按日期）: python main.py --persona personas/xxx.json --calendar calendars/xxx.json --tweets 10 --use-calendar")
+        print("   4. 生成图片: python main.py --generate-images --tweets-batch output_standalone/xxx.json\n")
 
 
 if __name__ == "__main__":

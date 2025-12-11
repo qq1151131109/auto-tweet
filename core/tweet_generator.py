@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Dict, List, Optional
 from datetime import datetime
 import sys
+import logging
 
 # 添加路径
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -15,12 +16,52 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from utils.llm_client import AsyncLLMClient, LLMClientPool
 from prompts.tweet_generation_prompt import _select_diverse_examples
 
+# 配置日志
+logger = logging.getLogger(__name__)
+
 
 class StandaloneTweetGenerator:
     """独立推文生成器"""
 
     def __init__(self, llm_client: AsyncLLMClient):
         self.llm = llm_client
+
+    async def _ensure_tweet_length(
+        self,
+        tweet_text: str,
+        persona: Dict,
+        max_length: int = 270,
+        max_retries: int = 3
+    ) -> str:
+        """
+        确保推文长度在限制内,必要时自动改写
+
+        Args:
+            tweet_text: 原始推文文本
+            persona: 人设JSON
+            max_length: 最大长度限制
+            max_retries: 最大重试次数
+
+        Returns:
+            符合长度要求的推文文本
+        """
+        retry_count = 0
+
+        while len(tweet_text) > max_length and retry_count < max_retries:
+            logger.warning(
+                f"推文超长 ({len(tweet_text)}字符), "
+                f"触发改写 (第{retry_count+1}次)"
+            )
+            tweet_text = await self._rewrite_tweet(tweet_text, persona)
+            retry_count += 1
+
+        if len(tweet_text) > max_length:
+            logger.warning(
+                f"推文在{max_retries}次改写后仍超过{max_length}字符 "
+                f"({len(tweet_text)}字符)"
+            )
+
+        return tweet_text
 
     async def generate_single_tweet(
         self,
@@ -63,18 +104,10 @@ class StandaloneTweetGenerator:
         result = self._parse_response(response, calendar_plan, persona)
 
         # 检查推文长度并自动改写
-        tweet_text = result.get("tweet_text", "")
-        max_retries = 3
-        retry_count = 0
-
-        while len(tweet_text) > 270 and retry_count < max_retries:
-            print(f"⚠️ 推文超长 ({len(tweet_text)}字符), 触发改写 (第{retry_count+1}次)")
-            tweet_text = await self._rewrite_tweet(tweet_text, persona)
-            result["tweet_text"] = tweet_text
-            retry_count += 1
-
-        if len(tweet_text) > 270:
-            print(f"⚠️ 警告: 推文在{max_retries}次改写后仍超过270字符 ({len(tweet_text)}字符)")
+        result["tweet_text"] = await self._ensure_tweet_length(
+            result.get("tweet_text", ""),
+            persona
+        )
 
         return result
 
@@ -122,18 +155,10 @@ class StandaloneTweetGenerator:
         result["mood"] = generation_spec.get("mood", "")
 
         # 检查推文长度并自动改写
-        tweet_text = result.get("tweet_text", "")
-        max_retries = 3
-        retry_count = 0
-
-        while len(tweet_text) > 270 and retry_count < max_retries:
-            print(f"⚠️ 推文超长 ({len(tweet_text)}字符), 触发改写 (第{retry_count+1}次)")
-            tweet_text = await self._rewrite_tweet(tweet_text, persona)
-            result["tweet_text"] = tweet_text
-            retry_count += 1
-
-        if len(tweet_text) > 270:
-            print(f"⚠️ 警告: 推文在{max_retries}次改写后仍超过270字符 ({len(tweet_text)}字符)")
+        result["tweet_text"] = await self._ensure_tweet_length(
+            result.get("tweet_text", ""),
+            persona
+        )
 
         return result
 

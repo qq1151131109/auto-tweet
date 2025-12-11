@@ -85,8 +85,8 @@ class ZImageGenerator:
                 try:
                     self.pipeline.transformer.set_attention_backend("flash")
                     logger.info("   ✓ 使用Flash Attention")
-                except:
-                    pass
+                except (AttributeError, RuntimeError, ValueError) as e:
+                    logger.debug(f"   Flash Attention不可用: {e}")
 
             # 可选：编译模型
             if compile:
@@ -159,7 +159,7 @@ class ZImageGenerator:
             else:
                 logger.warning(f"⚠️  Pipeline不支持fuse_lora，LoRA可能无法正常工作")
 
-        except Exception as e:
+        except (IOError, OSError, RuntimeError, ValueError) as e:
             logger.error(f"   ❌ LoRA加载失败: {e}")
 
     def unload_lora(self):
@@ -181,7 +181,7 @@ class ZImageGenerator:
                 self.pipeline.unload_lora_weights()
                 logger.info("✓ LoRA权重已卸载")
 
-        except Exception as e:
+        except (AttributeError, RuntimeError) as e:
             logger.warning(f"⚠️  LoRA卸载失败: {e}")
     def generate_image(
         self,
@@ -212,51 +212,58 @@ class ZImageGenerator:
         Returns:
             PIL.Image对象
         """
-        # 生成种子
-        if seed is None:
-            seed = torch.randint(0, 2**63 - 1, (1,)).item()
+        lora_loaded = False
+        try:
+            # 生成种子
+            if seed is None:
+                seed = torch.randint(0, 2**63 - 1, (1,)).item()
 
-        # 加载LoRA（如果指定）
-        if lora_path:
-            self.load_lora(lora_path, lora_strength)
-
-        # 创建generator
-        generator = torch.Generator(self.device).manual_seed(seed)
-
-        if self.use_diffusers:
-            # Diffusers模式
-            result = self.pipeline(
-                prompt=positive_prompt,
-                negative_prompt=negative_prompt if negative_prompt else None,
-                height=height,
-                width=width,
-                num_inference_steps=steps,
-                guidance_scale=cfg,
-                generator=generator
-            )
-            image = result.images[0]
-
-            # 卸载LoRA（避免影响下一次生成）
+            # 加载LoRA（如果指定）
             if lora_path:
-                self.unload_lora()
+                self.load_lora(lora_path, lora_strength)
+                lora_loaded = True
 
-        else:
-            # 原生PyTorch模式
-            from zimage.pipeline import generate
+            # 创建generator
+            generator = torch.Generator(self.device).manual_seed(seed)
 
-            images = generate(
-                prompt=positive_prompt,
-                negative_prompt=negative_prompt if negative_prompt else None,
-                height=height,
-                width=width,
-                num_inference_steps=steps,
-                guidance_scale=cfg,
-                generator=generator,
-                **self.components
-            )
-            image = images[0]
+            if self.use_diffusers:
+                # Diffusers模式
+                result = self.pipeline(
+                    prompt=positive_prompt,
+                    negative_prompt=negative_prompt if negative_prompt else None,
+                    height=height,
+                    width=width,
+                    num_inference_steps=steps,
+                    guidance_scale=cfg,
+                    generator=generator
+                )
+                image = result.images[0]
 
-        return image
+            else:
+                # 原生PyTorch模式
+                from zimage.pipeline import generate
+
+                images = generate(
+                    prompt=positive_prompt,
+                    negative_prompt=negative_prompt if negative_prompt else None,
+                    height=height,
+                    width=width,
+                    num_inference_steps=steps,
+                    guidance_scale=cfg,
+                    generator=generator,
+                    **self.components
+                )
+                image = images[0]
+
+            return image
+
+        finally:
+            # 确保LoRA被卸载（即使生成过程出错）
+            if lora_loaded and self.use_diffusers:
+                try:
+                    self.unload_lora()
+                except (AttributeError, RuntimeError) as e:
+                    logger.warning(f"⚠️  LoRA卸载失败: {e}")
 
 
 async def generate_batch_images_single_gpu(

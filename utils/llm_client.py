@@ -93,7 +93,13 @@ class AsyncLLMClient:
         max_tokens: int,
         timeout: int
     ) -> str:
-        """使用 aiohttp 异步调用"""
+        """使用 aiohttp 异步调用（带重试机制）"""
+        import logging
+        logger = logging.getLogger(__name__)
+
+        max_retries = 3
+        base_delay = 1  # 秒
+
         url = f"{self.api_base}/chat/completions"
         headers = {
             "Authorization": f"Bearer {self.api_key}",
@@ -106,19 +112,42 @@ class AsyncLLMClient:
             "max_tokens": max_tokens
         }
 
-        async with aiohttp.ClientSession() as session:
-            async with session.post(
-                url,
-                headers=headers,
-                json=payload,
-                timeout=aiohttp.ClientTimeout(total=timeout)
-            ) as resp:
-                if resp.status != 200:
-                    error_text = await resp.text()
-                    raise RuntimeError(f"LLM API 错误 {resp.status}: {error_text}")
+        for attempt in range(max_retries):
+            try:
+                async with aiohttp.ClientSession() as session:
+                    async with session.post(
+                        url,
+                        headers=headers,
+                        json=payload,
+                        timeout=aiohttp.ClientTimeout(total=timeout)
+                    ) as resp:
+                        # 处理 rate limit
+                        if resp.status == 429:
+                            if attempt < max_retries - 1:
+                                delay = base_delay * (2 ** attempt)  # 指数退避
+                                logger.warning(f"Rate limit hit, retrying in {delay}s...")
+                                await asyncio.sleep(delay)
+                                continue
+                            else:
+                                error_text = await resp.text()
+                                raise RuntimeError(f"LLM API rate limit after {max_retries} retries: {error_text}")
 
-                data = await resp.json()
-                return data["choices"][0]["message"]["content"]
+                        if resp.status != 200:
+                            error_text = await resp.text()
+                            raise RuntimeError(f"LLM API 错误 {resp.status}: {error_text}")
+
+                        data = await resp.json()
+                        return data["choices"][0]["message"]["content"]
+
+            except (aiohttp.ClientError, asyncio.TimeoutError) as e:
+                if attempt < max_retries - 1:
+                    delay = base_delay * (2 ** attempt)
+                    logger.warning(f"Request failed: {e}, retrying in {delay}s...")
+                    await asyncio.sleep(delay)
+                else:
+                    raise RuntimeError(f"LLM调用失败(重试{max_retries}次): {e}")
+
+        raise RuntimeError("LLM调用失败:超过最大重试次数")
 
 
 class LLMClientPool:

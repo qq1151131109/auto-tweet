@@ -118,7 +118,10 @@ class NativeImageGenerator:
             self.lora_manager.load_lora(lora_path, lora_strength)
 
         # Combine trigger word with prompt
-        full_prompt = f"{trigger_word}, {prompt}".strip(", ") if trigger_word else prompt
+        if trigger_word and trigger_word.strip():
+            full_prompt = f"{trigger_word}, {prompt}"
+        else:
+            full_prompt = prompt
 
         # Setup generator
         device = self.config['model']['device']
@@ -290,15 +293,24 @@ class NativeImageGenerator:
         """
         config = self.config['generation']['progressive_stages']['stage2']
 
-        # Upscale latent (nearest-exact, 2x)
-        latent_upscaled = upscale_latent(
+        # Calculate target latent dimensions
+        # Z-Image uses vae_scale=16 and 2x factor for latent dims
+        target_height = config['height']
+        target_width = config['width']
+        target_latent_h = 2 * (target_height // 16)
+        target_latent_w = 2 * (target_width // 16)
+
+        # Upscale latent to exact target dimensions (not scale factor!)
+        import torch.nn.functional as F
+        latent_upscaled = F.interpolate(
             latent_1,
-            scale_factor=2.0,
+            size=(target_latent_h, target_latent_w),
             mode=config.get('upscale_mode', 'nearest-exact')
         )
 
         logger.info(
-            f"Stage 2: Refining {config['width']}×{config['height']}, "
+            f"Stage 2: Upscaled latent {latent_1.shape} → {latent_upscaled.shape}, "
+            f"refining {config['width']}×{config['height']}, "
             f"steps={config['num_inference_steps']}, cfg={config['guidance_scale']}, "
             f"denoise={config['strength']}"
         )
@@ -346,15 +358,24 @@ class NativeImageGenerator:
         """
         config = self.config['generation']['progressive_stages']['stage3']
 
-        # Upscale latent (nearest-exact, 2x)
-        latent_upscaled = upscale_latent(
+        # Calculate target latent dimensions
+        # Z-Image uses vae_scale=16 and 2x factor for latent dims
+        target_height = config['height']
+        target_width = config['width']
+        target_latent_h = 2 * (target_height // 16)
+        target_latent_w = 2 * (target_width // 16)
+
+        # Upscale latent to exact target dimensions (not scale factor!)
+        import torch.nn.functional as F
+        latent_upscaled = F.interpolate(
             latent_2,
-            scale_factor=2.0,
+            size=(target_latent_h, target_latent_w),
             mode=config.get('upscale_mode', 'nearest-exact')
         )
 
         logger.info(
-            f"Stage 3: Final refine {config['width']}×{config['height']}, "
+            f"Stage 3: Upscaled latent {latent_2.shape} → {latent_upscaled.shape}, "
+            f"final refine {config['width']}×{config['height']}, "
             f"steps={config['num_inference_steps']}, cfg={config['guidance_scale']}, "
             f"denoise={config['strength']}"
         )

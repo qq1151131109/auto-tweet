@@ -227,20 +227,33 @@ def generate_with_img2img(
     )
 
     # Apply strength for img2img
+    # For Flow Matching img2img:
+    # 1. Add noise to initial_latent based on strength
+    # 2. Start denoising from that noise level (use fewer timesteps)
     if initial_latent is not None and strength < 1.0:
-        # Calculate which timestep to start from
-        init_timestep = min(int(num_inference_steps * strength), num_inference_steps)
-        t_start = max(num_inference_steps - init_timestep, 0)
-        timesteps = timesteps[t_start:]
+        # Calculate how many steps to skip
+        # strength=0.7 means start from 30% into the process (skip first 30% steps)
+        init_timestep = int(num_inference_steps * (1 - strength))
+        init_timestep = min(init_timestep, num_inference_steps - 1)
 
-        # Add noise to initial latent
-        if t_start > 0:
-            noise = torch.randn_like(latents)
-            latents = scheduler.add_noise(latents, noise, timesteps[0:1])
+        # Get the timestep at which to start
+        t_start = timesteps[init_timestep]
+
+        # Add noise to latent based on this timestep
+        # For Flow Matching: noise_level = t / 1000
+        noise = torch.randn(latents.shape, device=device, generator=generator, dtype=latents.dtype)
+        noise_level = t_start.float() / 1000.0
+
+        # Blend initial latent with noise: latent_noisy = (1-t) * latent + t * noise
+        latents = (1.0 - noise_level) * latents + noise_level * noise
+
+        # Use only the remaining timesteps
+        timesteps = timesteps[init_timestep:]
+        actual_steps = len(timesteps)
 
         logger.info(
-            f"img2img: Using {len(timesteps)}/{num_inference_steps} steps "
-            f"(strength={strength:.2f})"
+            f"img2img: Added noise at level {noise_level:.3f}, "
+            f"using {actual_steps}/{num_inference_steps} steps (strength={strength:.2f})"
         )
 
     # Denoising loop

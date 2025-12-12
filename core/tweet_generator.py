@@ -839,13 +839,15 @@ class BatchTweetGenerator:
 
         # 构建批次结果
         persona_data = persona.get("data", {})
+        extensions = persona_data.get("extensions", {})
+        lora_config = extensions.get("lora_config", {})
 
         return {
             "version": "1.0",
             "generated_at": datetime.now().isoformat(),
             "persona": {
                 "name": persona_data.get("name", ""),
-                "lora": {}
+                "lora": lora_config
             },
             "daily_plan": {
                 "date": selected_days[0][0] if selected_days else "",

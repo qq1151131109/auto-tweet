@@ -1,0 +1,254 @@
+{
+  "version": "2.0",
+  "generated_at": "2025-12-12T04:06:49.573889",
+  "generation_mode": "content_pool",
+  "persona": {
+    "name": "Lara Valente",
+    "archetype": "Gym Girl",
+    "lora": {}
+  },
+  "content_plan": {
+    "total_count": 1000,
+    "distribution": {
+      "gym_workout": 400,
+      "outdoor_casual": 100,
+      "bedroom_intimate": 150,
+      "mirror_selfie": 250,
+      "casual_selfie": 100
+    },
+    "diversity_stats": {
+      "gym_workout": {
+        "total_generated": 400,
+        "unique_combinations": 400
+      },
+      "mirror_selfie": {
+        "total_generated": 250,
+        "unique_combinations": 250
+      },
+      "casual_selfie": {
+        "total_generated": 100,
+        "unique_combinations": 100
+      },
+      "bedroom_intimate": {
+        "total_generated": 150,
+        "unique_combinations": 150
+      },
+      "outdoor_casual": {
+        "total_generated": 100,
+        "unique_combinations": 100
+      }
+    }
+  },
+  "tweets": [
+    {
+      "slot": 1,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "just finished stretching and my hamstrings are screaming but my ass looks fucking criminal in these leggings 😈 keep staring, i can feel your eyes sliding down my back already… quem aguenta?",
+      "image_generation": {
+        "scene_hint": "Close-up upper body shot in empty gym, harsh fluorescent lights overhead mixing with cold morning light from floor-to-ceiling windows, woman in downward dog stretch on black mat wearing tight black leggings and purple sports bra soaked dark with sweat, back deeply arched pushing ass high, one hand reaching forward wiping sweat off neck and sliding down between breasts, platinum hair messy in a high ponytail sticking to damp skin, playful smirk with tongue barely out, direct eye contact into mirror selfie cam, golden skin glistening, raw photo, candid photography, authentic snapshot, messy background with scattered weights and towels, slight motion blur on hand, uneven skin tone, slight overexposed highlights on sweat.",
+        "positive_prompt": "Close-up upper body shot in empty gym, harsh fluorescent lights overhead mixing with cold morning light from floor-to-ceiling windows, woman in downward dog stretch on black mat wearing tight black leggings and purple sports bra soaked dark with sweat, back deeply arched pushing ass high, one hand reaching forward wiping sweat off neck and sliding down between breasts, platinum hair messy in a high ponytail sticking to damp skin, playful smirk with tongue barely out, direct eye contact into mirror selfie cam, golden skin glistening, raw photo, candid photography, authentic snapshot, messy background with scattered weights and towels, slight motion blur on hand, uneven skin tone, slight overexposed highlights on sweat.",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "stretching",
+      "mood": "playful"
+    },
+    {
+      "slot": 2,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "just repped out 425 for 6 on hip thrusts and my glutes are so fucking pumped they’re shaking when i walk. whole body dripping, leggings glued to my ass like paint. look at this shit. i earned every inch of this 😈💦",
+      "image_generation": {
+        "scene_hint": "Late night gym mirror selfie, low angle from the floor looking up, woman standing tall in front of the plate-loaded hip thrust machine, high-waisted black leggings soaked dark with sweat clinging to every curve of her pumped glutes and quads, thin purple strappy sports bra barely holding everything in and soaked through, one hand wiping sweat from neck and chest with the bottom of her palm dragging slow across slick skin, shoulders back, chest out, legs shoulder-width apart showing off the deep separation in her quads, golden tan skin glistening under dim gym lights with purple LED strips behind the mirror, proud smirk with direct stare into camera, raw photo, candid photography, authentic snapshot, messy background with plates scattered and towels on floor, uneven skin tone, low lighting",
+        "positive_prompt": "Late night gym mirror selfie, low angle from the floor looking up, woman standing tall in front of the plate-loaded hip thrust machine, high-waisted black leggings soaked dark with sweat clinging to every curve of her pumped glutes and quads, thin purple strappy sports bra barely holding everything in and soaked through, one hand wiping sweat from neck and chest with the bottom of her palm dragging slow across slick skin, shoulders back, chest out, legs shoulder-width apart showing off the deep separation in her quads, golden tan skin glistening under dim gym lights with purple LED strips behind the mirror, proud smirk with direct stare into camera, raw photo, candid photography, authentic snapshot, messy background with plates scattered and towels on floor, uneven skin tone, low lighting",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "gym_mirror_selfie",
+      "mood": "proud"
+    },
+    {
+      "slot": 3,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "just finished training legs and my hamstrings are screaming but watch how far i can fold now 😈 ass up, back arched, still shaking from those last RDLs… tell me you wouldn’t grab these hips and make me hold this stretch longer caralho",
+      "image_generation": {
+        "scene_hint": "Low angle from the gym floor looking up, woman in deep forward fold stretch with legs straight and wide, palms flat on the mat between feet, oversized white t-shirt tied tight under breasts exposing toned stomach and lower back, tiny black spandex shorts riding high showing full glute curves and hamstring tie-ins, golden hour sunlight pouring through floor-to-ceiling windows hitting sweat-glistened golden skin, back strongly arched pushing ass up high, platinum waves falling forward, determined stare straight into camera with clenched jaw and slight smirk, flexing hamstrings and glutes hard, Raw photo, candid photography, authentic snapshot, messy gym floor background with plates and towels scattered, motion blur on hair strands, uneven skin tone, slight overexposed from window light",
+        "positive_prompt": "Low angle from the gym floor looking up, woman in deep forward fold stretch with legs straight and wide, palms flat on the mat between feet, oversized white t-shirt tied tight under breasts exposing toned stomach and lower back, tiny black spandex shorts riding high showing full glute curves and hamstring tie-ins, golden hour sunlight pouring through floor-to-ceiling windows hitting sweat-glistened golden skin, back strongly arched pushing ass up high, platinum waves falling forward, determined stare straight into camera with clenched jaw and slight smirk, flexing hamstrings and glutes hard, Raw photo, candid photography, authentic snapshot, messy gym floor background with plates and towels scattered, motion blur on hair strands, uneven skin tone, slight overexposed from window light",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "stretching",
+      "mood": "determined"
+    },
+    {
+      "slot": 4,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "just touched my toes with my ass practically in the mirror and felt these glutes flex so hard i got wet on the spot 😈 legs spread wide, back arched, t-shirt riding all the way up… come stretch me out properly, i dare you",
+      "image_generation": {
+        "scene_hint": "Low angle from behind in an empty Brickell gym, harsh fluorescent lights overhead washing everything bright white, woman in deep forward fold stretch, legs straight and spread shoulder-width, palms flat on the mat, oversized white t-shirt tied tight under breasts so it rides high exposing entire lower back and top of ass, tiny black spandex shorts wedged deep between pumped glutes showing full cheek curves and tan lines, back arched hard pushing ass up and out, glutes and hamstrings flexed and striated, long platinum waves hanging down toward floor, confident smirk visible in mirror reflection ahead, golden skin with visible sweat sheen, Raw photo, candid photography, authentic snapshot, messy background with scattered plates and towels, slight motion blur from breathing, Chromatic aberration",
+        "positive_prompt": "Low angle from behind in an empty Brickell gym, harsh fluorescent lights overhead washing everything bright white, woman in deep forward fold stretch, legs straight and spread shoulder-width, palms flat on the mat, oversized white t-shirt tied tight under breasts so it rides high exposing entire lower back and top of ass, tiny black spandex shorts wedged deep between pumped glutes showing full cheek curves and tan lines, back arched hard pushing ass up and out, glutes and hamstrings flexed and striated, long platinum waves hanging down toward floor, confident smirk visible in mirror reflection ahead, golden skin with visible sweat sheen, Raw photo, candid photography, authentic snapshot, messy background with scattered plates and towels, slight motion blur from breathing, Chromatic aberration",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "stretching",
+      "mood": "confident"
+    },
+    {
+      "slot": 5,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "just finished tearing my hamstrings apart with romanian deads and now stretching deep… legs shaking, pussy throbbing from the blood rush, still not done hurting so good 😈💦 quem aguenta me ver assim tremendo?",
+      "image_generation": {
+        "scene_hint": "Full body shot from slightly low angle in an empty Brickell gym, harsh fluorescent lights overhead washing everything bright white, woman in a matching baby-pink seamless gym set—high-waist leggings soaked dark with sweat clinging to every curve, matching sports bra pushed up from heavy breathing—standing in a deep forward fold stretch, palms flat on the floor, legs straight and spread shoulder-width, glutes flexed high in the air showing the outline of her pussy through thin fabric, one hand sliding up to wipe sweat dripping down her neck and between her breasts, golden tan skin glistening, determined stare straight into the mirror camera, hair messy in a high ponytail with loose strands stuck to her face, exhausted but proud expression with clenched jaw and flared nostrils, Raw photo, candid photography, authentic snapshot, messy background with scattered plates and towels, uneven skin tone, slight motion blur on trembling legs",
+        "positive_prompt": "Full body shot from slightly low angle in an empty Brickell gym, harsh fluorescent lights overhead washing everything bright white, woman in a matching baby-pink seamless gym set—high-waist leggings soaked dark with sweat clinging to every curve, matching sports bra pushed up from heavy breathing—standing in a deep forward fold stretch, palms flat on the floor, legs straight and spread shoulder-width, glutes flexed high in the air showing the outline of her pussy through thin fabric, one hand sliding up to wipe sweat dripping down her neck and between her breasts, golden tan skin glistening, determined stare straight into the mirror camera, hair messy in a high ponytail with loose strands stuck to her face, exhausted but proud expression with clenched jaw and flared nostrils, Raw photo, candid photography, authentic snapshot, messy background with scattered plates and towels, uneven skin tone, slight motion blur on trembling legs",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "stretching",
+      "mood": "determined"
+    },
+    {
+      "slot": 6,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "",
+      "image_generation": {
+        "scene_hint": "Full body shot from low angle in empty early morning gym, harsh fluorescent lighting overhead casting sharp shadows, woman standing at cable machine with arms extended overhead gripping handles, body in full extension showing arched back and hourglass curves, wearing tight black bike shorts riding low on hips and loose white tank top slipping to expose underboob and side of breasts, one hand reaching down to pull up the shorts higher, legs shoulder-width apart with weight shifted to one hip, long platinum-blonde wavy hair slightly messy, direct determined gaze into camera with focused expression and slight smirk, golden tan skin with light sweat sheen, Raw photo, candid photography, messy background with scattered gym equipment, uneven skin tone, slightly overexposed, chromatic aberration.<grok:render card_id=\"d797e1\" card_type=\"image_card\" type=\"render_searched_image\"> <argument name=\"image_id\">0</argument> <argument name=\"caption\">\"cable pulls got me dripping already... come feel this pump\"</argument> <argument name=\"size\">\"LARGE\"</argument> </grok:render><grok:render card_id=\"d9e782\" card_type=\"image_card\" type=\"render_searched_image\"> <argument name=\"image_id\">5</argument> <argument name=\"caption\">\"\"</argument> <argument name=\"size\">\"LARGE\"</argument> </grok:render><grok:render card_id=\"1a4333\" card_type=\"image_card\" type=\"render_searched_image\"> <argument name=\"image_id\">6</argument> <argument name=\"caption\">\"\"</argument> <argument name=\"size\">\"LARGE\"</argument> </grok:render><grok:render card_id=\"adcbfc\" card_type=\"image_card\" type=\"render_searched_image\"> <argument name=\"image_id\">9</argument> <argument name=\"caption\">\"\"</argument> <argument name=\"size\">\"LARGE\"</argument> </grok:render>",
+        "positive_prompt": "Full body shot from low angle in empty early morning gym, harsh fluorescent lighting overhead casting sharp shadows, woman standing at cable machine with arms extended overhead gripping handles, body in full extension showing arched back and hourglass curves, wearing tight black bike shorts riding low on hips and loose white tank top slipping to expose underboob and side of breasts, one hand reaching down to pull up the shorts higher, legs shoulder-width apart with weight shifted to one hip, long platinum-blonde wavy hair slightly messy, direct determined gaze into camera with focused expression and slight smirk, golden tan skin with light sweat sheen, Raw photo, candid photography, messy background with scattered gym equipment, uneven skin tone, slightly overexposed, chromatic aberration.<grok:render card_id=\"d797e1\" card_type=\"image_card\" type=\"render_searched_image\"> <argument name=\"image_id\">0</argument> <argument name=\"caption\">\"cable pulls got me dripping already... come feel this pump\"</argument> <argument name=\"size\">\"LARGE\"</argument> </grok:render><grok:render card_id=\"d9e782\" card_type=\"image_card\" type=\"render_searched_image\"> <argument name=\"image_id\">5</argument> <argument name=\"caption\">\"\"</argument> <argument name=\"size\">\"LARGE\"</argument> </grok:render><grok:render card_id=\"1a4333\" card_type=\"image_card\" type=\"render_searched_image\"> <argument name=\"image_id\">6</argument> <argument name=\"caption\">\"\"</argument> <argument name=\"size\">\"LARGE\"</argument> </grok:render><grok:render card_id=\"adcbfc\" card_type=\"image_card\" type=\"render_searched_image\"> <argument name=\"image_id\">9</argument> <argument name=\"caption\">\"\"</argument> <argument name=\"size\">\"LARGE\"</argument> </grok:render>",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "cable_machine",
+      "mood": "determined"
+    },
+    {
+      "slot": 7,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "",
+      "image_generation": {
+        "scene_hint": " Side profile medium shot at the squat rack, crowded afternoon gym with bright natural window light pouring in from the high Brickell windows, woman racked the bar after a heavy set and now resting with white towel draped over one shoulder, black super-short bike shorts wedged deep between pumped glutes and quads, loose white tank top clinging to skin and lifted just enough to show full underboob and sideboob glistening with sweat, weight shifted to one hip with legs slightly apart, back arched hard emphasizing the deep curve from waist to ass, determined stare straight ahead like she’s already thinking about the next set, platinum wavy hair messy in a high ponytail with loose strands stuck to neck, golden tan skin shining, Raw photo, candid photography, authentic snapshot, messy background with plates and people blurred behind, slight motion blur from breathing heavy, uneven skin tone from sweat streaks",
+        "positive_prompt": " Side profile medium shot at the squat rack, crowded afternoon gym with bright natural window light pouring in from the high Brickell windows, woman racked the bar after a heavy set and now resting with white towel draped over one shoulder, black super-short bike shorts wedged deep between pumped glutes and quads, loose white tank top clinging to skin and lifted just enough to show full underboob and sideboob glistening with sweat, weight shifted to one hip with legs slightly apart, back arched hard emphasizing the deep curve from waist to ass, determined stare straight ahead like she’s already thinking about the next set, platinum wavy hair messy in a high ponytail with loose strands stuck to neck, golden tan skin shining, Raw photo, candid photography, authentic snapshot, messy background with plates and people blurred behind, slight motion blur from breathing heavy, uneven skin tone from sweat streaks",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "squat_rack",
+      "mood": "determined"
+    },
+    {
+      "slot": 8,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "just repped out 405 like it’s nothing and my glutes are on fire. thighs shaking, pussy throbbing from the pump. need someone to come shove their face between these cheeks while they’re still burning 🔥 who’s strong enough?",
+      "image_generation": {
+        "scene_hint": "Low angle from the gym floor looking up, empty early-morning gym with harsh white fluorescent lights overhead, woman standing tall in front of the mirror wearing matching emerald green Lululemon set, high-waist leggings soaked dark with sweat clinging to every curve and deep camel toe visible, cropped sports bra pushing tits up high, one hand tipping a clear water bottle to her lips drinking hard while the other holds the phone, water dripping down chin onto chest, legs shoulder-width apart in power stance, abs tight, determined stare straight into the lens like she owns the place, golden tan skin glistening, Raw photo, candid photography, authentic snapshot, messy background with plates scattered and towel on floor, slight motion blur from breathing heavy, uneven skin tone from sweat streaks",
+        "positive_prompt": "Low angle from the gym floor looking up, empty early-morning gym with harsh white fluorescent lights overhead, woman standing tall in front of the mirror wearing matching emerald green Lululemon set, high-waist leggings soaked dark with sweat clinging to every curve and deep camel toe visible, cropped sports bra pushing tits up high, one hand tipping a clear water bottle to her lips drinking hard while the other holds the phone, water dripping down chin onto chest, legs shoulder-width apart in power stance, abs tight, determined stare straight into the lens like she owns the place, golden tan skin glistening, Raw photo, candid photography, authentic snapshot, messy background with plates scattered and towel on floor, slight motion blur from breathing heavy, uneven skin tone from sweat streaks",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "gym_mirror_selfie",
+      "mood": "determined"
+    },
+    {
+      "slot": 9,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "just finished destroying glutes & hamstrings and i’m dripping. leggings glued to every curve, sports bra barely holding these tits. body still buzzing, legs shaking a little. come feel how hard i worked papi 😈💦",
+      "image_generation": {
+        "scene_hint": "Side profile medium shot inside Brickell gym during golden hour, warm orange sunlight pouring through floor-to-ceiling windows hitting from behind and outlining every curve, woman standing tall with weight shifted to one leg, high-waisted black leggings soaked dark with sweat clinging to pumped glutes and thighs, thin-strapped purple sports bra soaked through and stretched tight across chest, one hand on hip pushing chest forward, other arm flexed showing bicep peak, back slightly arched to pop ass and narrow waist, platinum wavy hair messy and damp sticking to neck and shoulders, golden tan skin glistening, determined focused stare straight ahead with slight smirk and parted lips, raw photo, candid photography, authentic snapshot, messy background with plates scattered and water bottle on floor, uneven skin tone, slight motion blur from heavy breathing",
+        "positive_prompt": "Side profile medium shot inside Brickell gym during golden hour, warm orange sunlight pouring through floor-to-ceiling windows hitting from behind and outlining every curve, woman standing tall with weight shifted to one leg, high-waisted black leggings soaked dark with sweat clinging to pumped glutes and thighs, thin-strapped purple sports bra soaked through and stretched tight across chest, one hand on hip pushing chest forward, other arm flexed showing bicep peak, back slightly arched to pop ass and narrow waist, platinum wavy hair messy and damp sticking to neck and shoulders, golden tan skin glistening, determined focused stare straight ahead with slight smirk and parted lips, raw photo, candid photography, authentic snapshot, messy background with plates scattered and water bottle on floor, uneven skin tone, slight motion blur from heavy breathing",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "post_workout_rest",
+      "mood": "confident"
+    },
+    {
+      "slot": 10,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "just finished stretching and my glutes are so fucking pumped they’re pushing these bike shorts to the limit 😂 back arched deep, tank riding up, underboob out… tell me you wouldn’t stare if you walked past rn 🔥",
+      "image_generation": {
+        "scene_hint": "Low angle from directly behind in the empty stretching area, woman in deep forward fold over one leg then switching to full split on the mat, back perfectly arched pushing ass up high, black high-waist bike shorts stretched tight across flexed glutes with clear separation, loose white tank top fallen forward exposing full underboob and sideboob, golden hour sunlight pouring through floor-to-ceiling windows lighting up sweat on lower back and thighs, long platinum hair spilling down, confident determined expression looking back over shoulder straight into camera, shoulders back chest open, raw photo, candid photography, authentic snapshot, messy background with scattered mats and water bottles, slight motion blur from slow stretch, chromatic aberration",
+        "positive_prompt": "Low angle from directly behind in the empty stretching area, woman in deep forward fold over one leg then switching to full split on the mat, back perfectly arched pushing ass up high, black high-waist bike shorts stretched tight across flexed glutes with clear separation, loose white tank top fallen forward exposing full underboob and sideboob, golden hour sunlight pouring through floor-to-ceiling windows lighting up sweat on lower back and thighs, long platinum hair spilling down, confident determined expression looking back over shoulder straight into camera, shoulders back chest open, raw photo, candid photography, authentic snapshot, messy background with scattered mats and water bottles, slight motion blur from slow stretch, chromatic aberration",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "stretching",
+      "mood": "confident"
+    }
+  ]
+}

@@ -1,0 +1,254 @@
+{
+  "version": "2.0",
+  "generated_at": "2025-12-12T03:54:35.607777",
+  "generation_mode": "content_pool",
+  "persona": {
+    "name": "Lilia Volkov",
+    "archetype": "ABG",
+    "lora": {}
+  },
+  "content_plan": {
+    "total_count": 1000,
+    "distribution": {
+      "gym_workout": 250,
+      "bedroom_intimate": 300,
+      "outdoor_casual": 200,
+      "mirror_selfie": 150,
+      "casual_selfie": 100
+    },
+    "diversity_stats": {
+      "bedroom_intimate": {
+        "total_generated": 300,
+        "unique_combinations": 300
+      },
+      "casual_selfie": {
+        "total_generated": 100,
+        "unique_combinations": 100
+      },
+      "outdoor_casual": {
+        "total_generated": 200,
+        "unique_combinations": 200
+      },
+      "mirror_selfie": {
+        "total_generated": 150,
+        "unique_combinations": 150
+      },
+      "gym_workout": {
+        "total_generated": 250,
+        "unique_combinations": 250
+      }
+    }
+  },
+  "tweets": [
+    {
+      "slot": 1,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "just finished my last set and i'm dripping sweat... thighs burning, skin so hot under these tight pants. feels good to push hard then rest like this. who wants to be my recovery drink and spoil me after? send now and maybe i'll let you taste the sweat ♡ давай piggy",
+      "image_generation": {
+        "scene_hint": "Mirror selfie from front in gym, woman standing tall resting between sets with small white towel draped loosely around neck, grey high-waisted yoga pants hugging hips and thighs with visible sweat patches, cropped white tank clinging to damp skin and outlining hard nipples, shoulders back and chest open emphasizing curves, one hip shifted confidently, legs slightly apart, golden hour evening light streaming through large windows behind creating warm glow and highlights on sun-kissed skin with dewy sheen of sweat, sultry expression with bedroom eyes staring directly into camera and slight smirk, raw photo, candid photography, authentic snapshot, messy background with gym equipment scattered, uneven skin tone, motion blur from slight breathing.",
+        "positive_prompt": "Mirror selfie from front in gym, woman standing tall resting between sets with small white towel draped loosely around neck, grey high-waisted yoga pants hugging hips and thighs with visible sweat patches, cropped white tank clinging to damp skin and outlining hard nipples, shoulders back and chest open emphasizing curves, one hip shifted confidently, legs slightly apart, golden hour evening light streaming through large windows behind creating warm glow and highlights on sun-kissed skin with dewy sheen of sweat, sultry expression with bedroom eyes staring directly into camera and slight smirk, raw photo, candid photography, authentic snapshot, messy background with gym equipment scattered, uneven skin tone, motion blur from slight breathing.",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "post_workout_rest",
+      "mood": "sultry"
+    },
+    {
+      "slot": 2,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "",
+      "image_generation": {
+        "scene_hint": " Low angle from the gym floor looking straight up at the squat rack, late night empty gym with only dim overhead lights and purple accent LEDs, woman standing with legs shoulder-width apart resting between sets, black bike shorts soaked and clinging to every curve of her glutes and thighs, loose white tank top damp with sweat and drooping so low the underside of bare breasts and hard nipples are visible, small white towel draped over one shoulder, golden tan skin glistening with sweat, back slightly arched pushing ass out, exhausted but sultry half-lidded stare directly into camera with lips parted, messy auburn hair sticking to neck. Raw photo, candid photography, authentic snapshot, messy background with plates and bars scattered, low lighting, uneven skin tone, slight motion blur from breathing heavy",
+        "positive_prompt": " Low angle from the gym floor looking straight up at the squat rack, late night empty gym with only dim overhead lights and purple accent LEDs, woman standing with legs shoulder-width apart resting between sets, black bike shorts soaked and clinging to every curve of her glutes and thighs, loose white tank top damp with sweat and drooping so low the underside of bare breasts and hard nipples are visible, small white towel draped over one shoulder, golden tan skin glistening with sweat, back slightly arched pushing ass out, exhausted but sultry half-lidded stare directly into camera with lips parted, messy auburn hair sticking to neck. Raw photo, candid photography, authentic snapshot, messy background with plates and bars scattered, low lighting, uneven skin tone, slight motion blur from breathing heavy",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "squat_rack",
+      "mood": "sultry"
+    },
+    {
+      "slot": 3,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "late night gym hits different when it’s dead empty 🖤 legs still shaking, thighs on fire, ass so tight in these leggings i can barely walk. someone come rub me down before i turn full brat ♡ send for recovery or nyet 😈",
+      "image_generation": {
+        "scene_hint": "Full body shot from low angle in dimly lit gym at night, only a few overhead lights still on casting long shadows, woman standing with weight shifted to one hip in tight black leggings and purple sports bra, deep forward bend stretch just finished, now slowly rising while drinking from water bottle held in right hand, left hand pushing hair back, back strongly arched emphasizing extreme waist curve and round ass pushed out, golden tan skin glistening with sweat, sports bra stretched tight across chest, confident smirk with direct bedroom-eye stare into camera, shoulders back, legs shoulder-width apart showing toned thighs and flexibility, messy high ponytail, empty gym mirrors and scattered equipment in background. Raw photo, candid photography, authentic snapshot, motion blur from rising movement, low lighting, uneven skin tone, chromatic aberration",
+        "positive_prompt": "Full body shot from low angle in dimly lit gym at night, only a few overhead lights still on casting long shadows, woman standing with weight shifted to one hip in tight black leggings and purple sports bra, deep forward bend stretch just finished, now slowly rising while drinking from water bottle held in right hand, left hand pushing hair back, back strongly arched emphasizing extreme waist curve and round ass pushed out, golden tan skin glistening with sweat, sports bra stretched tight across chest, confident smirk with direct bedroom-eye stare into camera, shoulders back, legs shoulder-width apart showing toned thighs and flexibility, messy high ponytail, empty gym mirrors and scattered equipment in background. Raw photo, candid photography, authentic snapshot, motion blur from rising movement, low lighting, uneven skin tone, chromatic aberration",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "stretching",
+      "mood": "confident"
+    },
+    {
+      "slot": 4,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "pulling this cable and feeling my whole body stretch tight… shirt keeps riding higher every rep 😈 bet someone’s dying to spot me right now. send $200 if you’re getting hard watching me work for it, krasavchik 💋",
+      "image_generation": {
+        "scene_hint": "Side profile medium shot in empty gym, harsh fluorescent overhead lights washing everything cold white, doing cable fly mid-rep with arms extended wide pulling the handles, back arched hard, oversized white t-shirt tied in a knot under breasts exposing toned stomach and deep curve of waist into hips, tiny black spandex shorts riding up ass cheeks, glutes flexed and round, ponytail swinging, playful smirk with tongue touching top lip, direct eye contact to camera, golden skin with light sweat sheen, raw photo, candid photography, authentic snapshot, messy background with scattered weights and towels, slight motion blur on arms, chromatic aberration",
+        "positive_prompt": "Side profile medium shot in empty gym, harsh fluorescent overhead lights washing everything cold white, doing cable fly mid-rep with arms extended wide pulling the handles, back arched hard, oversized white t-shirt tied in a knot under breasts exposing toned stomach and deep curve of waist into hips, tiny black spandex shorts riding up ass cheeks, glutes flexed and round, ponytail swinging, playful smirk with tongue touching top lip, direct eye contact to camera, golden skin with light sweat sheen, raw photo, candid photography, authentic snapshot, messy background with scattered weights and towels, slight motion blur on arms, chromatic aberration",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "cable_machine",
+      "mood": "playful"
+    },
+    {
+      "slot": 5,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "",
+      "image_generation": {
+        "scene_hint": " Side profile medium shot at the squat rack during golden hour, warm orange sunlight pouring through floor-to-ceiling gym windows hitting from behind, woman mid-rep with heavy barbell across upper back, knees bent deep, oversized white t-shirt knotted high under breasts exposing toned stomach and lower back, tiny black spandex shorts riding up showing full round glutes and thick thighs flexed hard, ass pushed back, back arched, ponytail swinging, sun-kissed skin glistening with sweat, confident smirk with direct eye contact to mirror, raw photo, candid photography, motion blur on ponytail, messy background with plates and towels on floor, slight overexposed glow from windows",
+        "positive_prompt": " Side profile medium shot at the squat rack during golden hour, warm orange sunlight pouring through floor-to-ceiling gym windows hitting from behind, woman mid-rep with heavy barbell across upper back, knees bent deep, oversized white t-shirt knotted high under breasts exposing toned stomach and lower back, tiny black spandex shorts riding up showing full round glutes and thick thighs flexed hard, ass pushed back, back arched, ponytail swinging, sun-kissed skin glistening with sweat, confident smirk with direct eye contact to mirror, raw photo, candid photography, motion blur on ponytail, messy background with plates and towels on floor, slight overexposed glow from windows",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "squat_rack",
+      "mood": "confident"
+    },
+    {
+      "slot": 6,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "just finished legs and my ass is literally throbbing 🍑 wearing this tiny tied-up tee so you can see every new curve i made you pay for… keep staring krasavchik, your card’s about to get another workout too ♡",
+      "image_generation": {
+        "scene_hint": "Low angle from the gym floor looking up, woman standing in front of cable machine mid-pose pulling the handle down behind her head, body fully extended with deep back arch and anterior pelvic tilt showing exaggerated waist-hip ratio, oversized white t-shirt knotted tight under breasts exposing toned bare midriff and lower back, tiny black spandex shorts riding high on sun-kissed thighs, one hand playfully tugging the waistband of the shorts higher to show more glute curve, golden hour sunlight pouring through floor-to-ceiling windows creating warm glow and long shadows across skin, confident smirk with direct bedroom-eye stare down into lens, shoulders back chest open, legs shoulder-width apart owning the frame, raw photo, candid photography, authentic snapshot, messy gym background with weights and towels scattered, slight motion blur in arms, uneven golden skin tone with visible sweat sheen",
+        "positive_prompt": "Low angle from the gym floor looking up, woman standing in front of cable machine mid-pose pulling the handle down behind her head, body fully extended with deep back arch and anterior pelvic tilt showing exaggerated waist-hip ratio, oversized white t-shirt knotted tight under breasts exposing toned bare midriff and lower back, tiny black spandex shorts riding high on sun-kissed thighs, one hand playfully tugging the waistband of the shorts higher to show more glute curve, golden hour sunlight pouring through floor-to-ceiling windows creating warm glow and long shadows across skin, confident smirk with direct bedroom-eye stare down into lens, shoulders back chest open, legs shoulder-width apart owning the frame, raw photo, candid photography, authentic snapshot, messy gym background with weights and towels scattered, slight motion blur in arms, uneven golden skin tone with visible sweat sheen",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "cable_machine",
+      "mood": "playful"
+    },
+    {
+      "slot": 7,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "late night gym empty and these leggings are glued to my ass from sweat 😈 keep staring piggy, you know you’ll never touch this… but you can send for the next pair if you’re good ♡ кто хочет увидеть как я тянусь глубже?",
+      "image_generation": {
+        "scene_hint": "From directly behind, low angle: standing in the empty gym doing a deep forward fold stretch, palms flat on the floor, legs straight, black high-waist leggings stretched so tight the fabric is shiny across my ass and thighs, purple sports bra riding up exposing lower back and sideboob, back arched hard to push glutes up higher, long straight auburn-brown hair hanging down almost touching the mat, golden skin glistening under dim overhead lights, slight smirk visible when I glance back over my shoulder straight into camera, flexing hamstrings and squeezing glutes on purpose. Raw photo, candid photography, motion blur on hair, messy background with scattered weights and towels, low lighting, uneven skin tone from sweat, chromatic aberration.",
+        "positive_prompt": "From directly behind, low angle: standing in the empty gym doing a deep forward fold stretch, palms flat on the floor, legs straight, black high-waist leggings stretched so tight the fabric is shiny across my ass and thighs, purple sports bra riding up exposing lower back and sideboob, back arched hard to push glutes up higher, long straight auburn-brown hair hanging down almost touching the mat, golden skin glistening under dim overhead lights, slight smirk visible when I glance back over my shoulder straight into camera, flexing hamstrings and squeezing glutes on purpose. Raw photo, candid photography, motion blur on hair, messy background with scattered weights and towels, low lighting, uneven skin tone from sweat, chromatic aberration.",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "stretching",
+      "mood": "teasing"
+    },
+    {
+      "slot": 8,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "just finished crushing cables and my whole body’s buzzing ♡ back arched, hips pushing forward, sweat dripping down my chest... feeling so fucking powerful right now. who’s gonna spoil this strong princess before I hit the showers? don’t keep me waiting krasavchik 💸✨",
+      "image_generation": {
+        "scene_hint": "Close-up upper body shot from slightly below eye level at the gym cable machine, woman wearing tight grey yoga pants and cropped white tank top clinging to sweaty skin, mid-pose drinking from water bottle with head tilted back slightly, throat exposed, tank riding up showing toned lower stomach and curve of underboob, shoulders back and chest pushed out emphasizing waist-hip ratio, confident smirk with direct intense gaze into camera, golden tan skin with visible sheen of sweat, natural afternoon window light streaming in bright and harsh, crowded gym with blurred people and equipment in background, Raw photo, candid photography, authentic snapshot, messy background, motion blur from slight movement, uneven skin tone, slightly overexposed.",
+        "positive_prompt": "Close-up upper body shot from slightly below eye level at the gym cable machine, woman wearing tight grey yoga pants and cropped white tank top clinging to sweaty skin, mid-pose drinking from water bottle with head tilted back slightly, throat exposed, tank riding up showing toned lower stomach and curve of underboob, shoulders back and chest pushed out emphasizing waist-hip ratio, confident smirk with direct intense gaze into camera, golden tan skin with visible sheen of sweat, natural afternoon window light streaming in bright and harsh, crowded gym with blurred people and equipment in background, Raw photo, candid photography, authentic snapshot, messy background, motion blur from slight movement, uneven skin tone, slightly overexposed.",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "cable_machine",
+      "mood": "confident"
+    },
+    {
+      "slot": 9,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "",
+      "image_generation": {
+        "scene_hint": "",
+        "positive_prompt": "",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "stretching",
+      "mood": "confident"
+    },
+    {
+      "slot": 10,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "",
+      "image_generation": {
+        "scene_hint": " Low angle from directly behind in the gym during golden hour, warm orange sunset pouring through floor-to-ceiling windows and hitting my ass perfectly, deep forward bend with hands grabbing ankles, back arched hard pushing glutes up high, grey high-waisted yoga pants pulled halfway down the curve of my ass from the stretch showing the top of my black thong and lower back dimples, cropped white tank riding up exposing toned waist and underboob, long auburn hair falling forward, looking back over my shoulder at camera with a playful smirk and direct eye contact, one hand reaching back casually tugging the waistband lower instead of higher, sun-kissed skin with light sweat sheen. Raw photo, candid photography, authentic snapshot, messy background with weights and mirrors blurred, slight motion blur in hair, chromatic aberration, slightly overexposed from window light.",
+        "positive_prompt": " Low angle from directly behind in the gym during golden hour, warm orange sunset pouring through floor-to-ceiling windows and hitting my ass perfectly, deep forward bend with hands grabbing ankles, back arched hard pushing glutes up high, grey high-waisted yoga pants pulled halfway down the curve of my ass from the stretch showing the top of my black thong and lower back dimples, cropped white tank riding up exposing toned waist and underboob, long auburn hair falling forward, looking back over my shoulder at camera with a playful smirk and direct eye contact, one hand reaching back casually tugging the waistband lower instead of higher, sun-kissed skin with light sweat sheen. Raw photo, candid photography, authentic snapshot, messy background with weights and mirrors blurred, slight motion blur in hair, chromatic aberration, slightly overexposed from window light.",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "stretching",
+      "mood": "confident"
+    }
+  ]
+}

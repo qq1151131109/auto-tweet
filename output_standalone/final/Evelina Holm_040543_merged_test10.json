@@ -1,0 +1,254 @@
+{
+  "version": "2.0",
+  "generated_at": "2025-12-12T04:05:43.232391",
+  "generation_mode": "content_pool",
+  "persona": {
+    "name": "Evelina Holm",
+    "archetype": "ABG",
+    "lora": {}
+  },
+  "content_plan": {
+    "total_count": 1000,
+    "distribution": {
+      "gym_workout": 250,
+      "bedroom_intimate": 300,
+      "outdoor_casual": 200,
+      "mirror_selfie": 150,
+      "casual_selfie": 100
+    },
+    "diversity_stats": {
+      "gym_workout": {
+        "total_generated": 250,
+        "unique_combinations": 250
+      },
+      "outdoor_casual": {
+        "total_generated": 200,
+        "unique_combinations": 200
+      },
+      "casual_selfie": {
+        "total_generated": 100,
+        "unique_combinations": 100
+      },
+      "bedroom_intimate": {
+        "total_generated": 300,
+        "unique_combinations": 300
+      },
+      "mirror_selfie": {
+        "total_generated": 150,
+        "unique_combinations": 150
+      }
+    }
+  },
+  "tweets": [
+    {
+      "slot": 1,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "Empty late-night gym. Just me and the squat rack. Leggings soaked, clinging to every curve. Thighs shaking, glutes on fire. Won’t stop till that deep ache throbs between my legs too. Good boys watch mommy finish her set… then beg for the real workout.",
+      "image_generation": {
+        "scene_hint": "Low angle from directly behind at the squat rack in a near-empty gym, only red EXIT sign and faint overhead fluorescents glowing, Evelina mid-adjustment pulling black leggings higher so they dig tight into her hips and wedge between pumped glutes, purple sports bra soaked dark with sweat, back arched hard, shoulders back, golden skin glistening under dim light, round ass pushed out and flexed, thighs thick and trembling from the last rep, looking back over one shoulder with sultry half-lidded stare and slight smirk, raw photo, candid photography, motion blur on hands, messy background with scattered plates and towels, low lighting, slight underexposed shadows.",
+        "positive_prompt": "Low angle from directly behind at the squat rack in a near-empty gym, only red EXIT sign and faint overhead fluorescents glowing, Evelina mid-adjustment pulling black leggings higher so they dig tight into her hips and wedge between pumped glutes, purple sports bra soaked dark with sweat, back arched hard, shoulders back, golden skin glistening under dim light, round ass pushed out and flexed, thighs thick and trembling from the last rep, looking back over one shoulder with sultry half-lidded stare and slight smirk, raw photo, candid photography, motion blur on hands, messy background with scattered plates and towels, low lighting, slight underexposed shadows.",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "squat_rack",
+      "mood": "sultry"
+    },
+    {
+      "slot": 2,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "just finished my last set and caught myself in the mirror. sweat running down my back, thighs burning, heart racing. love how strong my body feels right now. wish you were here to watch me push harder, darling boy. be good and stay hard for Mommy.",
+      "image_generation": {
+        "scene_hint": "Full body mirror selfie in gym, shot straight-on from chest height showing entire physique and legs, Evelina mid-rep doing bicep curls with dumbbells, arms flexed and raised, matching deep emerald sports bra and high-waisted leggings hugging curves, arched back emphasizing waist-to-hip ratio, legs shoulder-width apart with weight shifted to one hip, golden hour sunlight pouring through large windows behind her creating warm glow and highlights on sun-kissed skin, direct confident eye contact with slight playful smirk and parted lips, raw photo, candid photography, authentic snapshot, messy gym background with weights and mats visible, uneven skin tone, slight motion blur on moving arms, chromatic aberration.",
+        "positive_prompt": "Full body mirror selfie in gym, shot straight-on from chest height showing entire physique and legs, Evelina mid-rep doing bicep curls with dumbbells, arms flexed and raised, matching deep emerald sports bra and high-waisted leggings hugging curves, arched back emphasizing waist-to-hip ratio, legs shoulder-width apart with weight shifted to one hip, golden hour sunlight pouring through large windows behind her creating warm glow and highlights on sun-kissed skin, direct confident eye contact with slight playful smirk and parted lips, raw photo, candid photography, authentic snapshot, messy gym background with weights and mats visible, uneven skin tone, slight motion blur on moving arms, chromatic aberration.",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "gym_mirror_selfie",
+      "mood": "confident"
+    },
+    {
+      "slot": 3,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "thighs burning from the last set. glutes so tight they ache with every step. watching myself in the mirror—strong, controlled, exactly how Mommy likes her boys to become. keep your eyes on me, darling. train hard so you can kneel longer.",
+      "image_generation": {
+        "scene_hint": "Full body shot from front slightly low angle at the squat rack in an empty gym, woman mid-squat with barbell across upper back, oversized white t-shirt tied in a knot at waist exposing toned midriff and lower back, tight black gym shorts hugging glutes and thighs, legs shoulder-width apart with visible muscle definition in quads and glutes flexed hard, shoulders back and chest open, direct confident gaze straight into camera with slight smirk and bedroom eyes, harsh fluorescent overhead lighting casting strong shadows under curves, golden tan skin with sheen of sweat, messy ponytail with loose strands sticking to neck, Raw photo, candid photography, authentic snapshot, messy background with scattered weights and towels, motion blur on slight movement, uneven skin tone.",
+        "positive_prompt": "Full body shot from front slightly low angle at the squat rack in an empty gym, woman mid-squat with barbell across upper back, oversized white t-shirt tied in a knot at waist exposing toned midriff and lower back, tight black gym shorts hugging glutes and thighs, legs shoulder-width apart with visible muscle definition in quads and glutes flexed hard, shoulders back and chest open, direct confident gaze straight into camera with slight smirk and bedroom eyes, harsh fluorescent overhead lighting casting strong shadows under curves, golden tan skin with sheen of sweat, messy ponytail with loose strands sticking to neck, Raw photo, candid photography, authentic snapshot, messy background with scattered weights and towels, motion blur on slight movement, uneven skin tone.",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "squat_rack",
+      "mood": "confident"
+    },
+    {
+      "slot": 4,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "late night gym’s almost empty and these shorts are riding so far up my ass every step burns. had to stop between sets just to breathe. look at what all that squatting did for Mommy, darling… don’t you want to drop to your knees and say thank you?",
+      "image_generation": {
+        "scene_hint": "Gym mirror selfie shot from behind, phone held high in right hand, Evelina standing with weight shifted to left hip, legs shoulder-width apart, black bike shorts wedged deep between round glutes showing clear underboob from the loose white tank top clinging with sweat, towel draped over left shoulder, back slightly arched pushing ass out, golden skin glistening under dim overhead lights, few people blurred in background, sultry playful smirk thrown over her shoulder straight into the mirror, Raw photo, candid photography, authentic snapshot, messy background with scattered plates and water bottles, uneven skin tone, low lighting, slight motion blur",
+        "positive_prompt": "Gym mirror selfie shot from behind, phone held high in right hand, Evelina standing with weight shifted to left hip, legs shoulder-width apart, black bike shorts wedged deep between round glutes showing clear underboob from the loose white tank top clinging with sweat, towel draped over left shoulder, back slightly arched pushing ass out, golden skin glistening under dim overhead lights, few people blurred in background, sultry playful smirk thrown over her shoulder straight into the mirror, Raw photo, candid photography, authentic snapshot, messy background with scattered plates and water bottles, uneven skin tone, low lighting, slight motion blur",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "gym_mirror_selfie",
+      "mood": "playful"
+    },
+    {
+      "slot": 5,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "just finished pushing myself hard at the gym. body’s dripping, thighs shaking a little, tank clinging to every curve. underboob peeking out with every breath. feels good to be this spent and still know exactly who’s in charge, darling. Mommy’s glowing.",
+      "image_generation": {
+        "scene_hint": "Full body shot from slightly low angle in a dimly lit late-night gym with only a few lights left on, Evelina standing tall with legs shoulder-width apart and weight shifted to one hip, wiping sweat from neck and chest with a white towel held in one hand, wearing tight black bike shorts hugging thighs and glutes and a loose white tank top damp with sweat showing underboob and clinging to breasts, golden skin with visible sheen of sweat and muscle definition in legs and abs, shoulders back with confident posture, direct intense gaze into camera with slight smirk and parted lips, messy ponytail with stray strands stuck to neck, empty weight racks and mirrors blurred in background, low lighting casting soft shadows that highlight curves, Raw photo, candid photography, authentic snapshot, messy background, uneven skin tone, motion blur on towel hand.",
+        "positive_prompt": "Full body shot from slightly low angle in a dimly lit late-night gym with only a few lights left on, Evelina standing tall with legs shoulder-width apart and weight shifted to one hip, wiping sweat from neck and chest with a white towel held in one hand, wearing tight black bike shorts hugging thighs and glutes and a loose white tank top damp with sweat showing underboob and clinging to breasts, golden skin with visible sheen of sweat and muscle definition in legs and abs, shoulders back with confident posture, direct intense gaze into camera with slight smirk and parted lips, messy ponytail with stray strands stuck to neck, empty weight racks and mirrors blurred in background, low lighting casting soft shadows that highlight curves, Raw photo, candid photography, authentic snapshot, messy background, uneven skin tone, motion blur on towel hand.",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "post_workout_rest",
+      "mood": "confident"
+    },
+    {
+      "slot": 6,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "pulling the cable slow, feeling the burn all the way down my back and into these yoga pants. glutes clenched so tight the fabric’s riding up. bet someone’s staring right now, wishing he could drop to his knees behind me and beg Mommy for the next rep ♡",
+      "image_generation": {
+        "scene_hint": "Low angle from directly behind at the empty gym cable machine, Evelina standing tall with legs shoulder-width apart pulling the cable handle down in a tricep extension, back fully arched to push glutes out, grey high-waisted yoga pants stretched thin and clinging to every curve with visible seam digging between cheeks, cropped white tank riding up exposing toned lower back and slight sideboob, shoulders flexed and back muscles defined, long blonde hair in a messy high ponytail swinging with the motion, sultry half-lidded eyes glancing back over one shoulder with a knowing smirk, harsh fluorescent gym lighting overhead casting hard shadows under glutes and down the backs of thighs, golden tan skin with light sweat sheen. Raw photo, candid photography, authentic snapshot, motion blur on arms and hair, messy background with scattered weights and towels, slight chromatic aberration.",
+        "positive_prompt": "Low angle from directly behind at the empty gym cable machine, Evelina standing tall with legs shoulder-width apart pulling the cable handle down in a tricep extension, back fully arched to push glutes out, grey high-waisted yoga pants stretched thin and clinging to every curve with visible seam digging between cheeks, cropped white tank riding up exposing toned lower back and slight sideboob, shoulders flexed and back muscles defined, long blonde hair in a messy high ponytail swinging with the motion, sultry half-lidded eyes glancing back over one shoulder with a knowing smirk, harsh fluorescent gym lighting overhead casting hard shadows under glutes and down the backs of thighs, golden tan skin with light sweat sheen. Raw photo, candid photography, authentic snapshot, motion blur on arms and hair, messy background with scattered weights and towels, slight chromatic aberration.",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "cable_machine",
+      "mood": "sultry"
+    },
+    {
+      "slot": 7,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "cable row hitting different. back arched, lats flared, tank riding high—underboob out, not fixing it. every rep clenches my glutes harder in these shorts. watch mommy work, darling. you’d drop to your knees on this rubber floor if i said the word.",
+      "image_generation": {
+        "scene_hint": "Full body shot from low angle in empty gym, harsh fluorescent overhead lights washing everything cold white, Evelina mid-rep on the cable row machine, seated with legs spread wide and feet planted firm, black bike shorts stretched tight over thighs and ass, loose white tank top pulled high from the stretch exposing underboob and lower ribs, back arched hard, shoulders pulled back, lats flexed and visible, golden skin with light sweat sheen, direct confident stare into camera with slight smirk and parted lips, messy blonde ponytail, weight stack blurred behind, Raw photo, candid photography, authentic snapshot, messy background with scattered plates and towels, uneven skin tone, slight motion blur on arms.",
+        "positive_prompt": "Full body shot from low angle in empty gym, harsh fluorescent overhead lights washing everything cold white, Evelina mid-rep on the cable row machine, seated with legs spread wide and feet planted firm, black bike shorts stretched tight over thighs and ass, loose white tank top pulled high from the stretch exposing underboob and lower ribs, back arched hard, shoulders pulled back, lats flexed and visible, golden skin with light sweat sheen, direct confident stare into camera with slight smirk and parted lips, messy blonde ponytail, weight stack blurred behind, Raw photo, candid photography, authentic snapshot, messy background with scattered plates and towels, uneven skin tone, slight motion blur on arms.",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "cable_machine",
+      "mood": "confident"
+    },
+    {
+      "slot": 8,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "legs still trembling from stretching—thighs on fire, back arched deep, curves glistening under this tied-up tee. come here, darling boy. tell Mommy which part you can’t stop staring at. don’t lie, I’ll know ♡",
+      "image_generation": {
+        "scene_hint": "Medium shot from behind at low angle in home gym during golden hour evening light streaming through large windows, Evelina in deep forward fold stretch with legs straight and spread shoulder-width, palms flat on yoga mat, glutes pushed back and high emphasizing rounded shape and toned thighs, oversized white t-shirt tied in a knot at lower back exposing bare midriff and lower back curve, tight black shorts hugging ass, one hand reaching back to tilt water bottle to lips mid-drink, head turned slightly toward camera with playful smirk and direct eye contact, golden warm sunlight highlighting sweat sheen on skin and muscle definition, confident arched spine, messy blonde ponytail, raw photo, candid photography, authentic snapshot, messy background with scattered weights and towel on floor, slight motion blur from breathing, chromatic aberration.",
+        "positive_prompt": "Medium shot from behind at low angle in home gym during golden hour evening light streaming through large windows, Evelina in deep forward fold stretch with legs straight and spread shoulder-width, palms flat on yoga mat, glutes pushed back and high emphasizing rounded shape and toned thighs, oversized white t-shirt tied in a knot at lower back exposing bare midriff and lower back curve, tight black shorts hugging ass, one hand reaching back to tilt water bottle to lips mid-drink, head turned slightly toward camera with playful smirk and direct eye contact, golden warm sunlight highlighting sweat sheen on skin and muscle definition, confident arched spine, messy blonde ponytail, raw photo, candid photography, authentic snapshot, messy background with scattered weights and towel on floor, slight motion blur from breathing, chromatic aberration.",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "stretching",
+      "mood": "playful"
+    },
+    {
+      "slot": 9,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "just finished another set and my glutes are on fire. tight leggings soaked through, thighs shaking, but I’m still going lower… because I know certain boys are watching and getting very, very weak right now. keep staring, darling. Mommy’s not done showing off yet ♡",
+      "image_generation": {
+        "scene_hint": "Low angle from the gym floor looking up at the squat rack in busy afternoon light pouring through huge windows, Evelina mid-squat with barbell across upper back, black matching sports bra and high-waisted leggings in deep burgundy, fabric stretched tight over round ass and thick thighs flexed hard, weight on heels, back arched, glutes clenched and round, golden skin glistening with sweat, playful smirk with tongue touching top lip, direct eye contact down the lens, messy high ponytail, people and equipment blurred behind. Raw photo, candid photography, authentic snapshot, motion blur on the way back up, slight overexposed from window light, messy background.",
+        "positive_prompt": "Low angle from the gym floor looking up at the squat rack in busy afternoon light pouring through huge windows, Evelina mid-squat with barbell across upper back, black matching sports bra and high-waisted leggings in deep burgundy, fabric stretched tight over round ass and thick thighs flexed hard, weight on heels, back arched, glutes clenched and round, golden skin glistening with sweat, playful smirk with tongue touching top lip, direct eye contact down the lens, messy high ponytail, people and equipment blurred behind. Raw photo, candid photography, authentic snapshot, motion blur on the way back up, slight overexposed from window light, messy background.",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "squat_rack",
+      "mood": "playful"
+    },
+    {
+      "slot": 10,
+      "time_segment": "",
+      "topic_type": "",
+      "tweet_text": "late night gym, almost empty. leggings keep slipping down while i pull the cable nice and slow. have to stop every set to tug them back up over my hips. keeps my ass right in your mind, doesn’t it, darling boy? good. watch Mommy work.",
+      "image_generation": {
+        "scene_hint": "Low angle from the gym floor looking up, Evelina standing at the cable machine pulling the handle down behind her head, arms extended overhead, back arched hard to show deep waist curve and round ass pushing against black high-waisted leggings, thin purple strappy sports bra barely holding everything in, one hand paused mid-rep to hook thumb into waistband and yank leggings higher so the fabric pulls tight between her cheeks, golden skin with light sweat sheen, ponytail swinging, confident smirk straight into camera, dim overhead gym lights with purple neon accents, empty machines blurred behind her, Raw photo, candid photography, authentic snapshot, motion blur on arms, messy background with scattered weights and towels, low lighting, slight chromatic aberration",
+        "positive_prompt": "Low angle from the gym floor looking up, Evelina standing at the cable machine pulling the handle down behind her head, arms extended overhead, back arched hard to show deep waist curve and round ass pushing against black high-waisted leggings, thin purple strappy sports bra barely holding everything in, one hand paused mid-rep to hook thumb into waistband and yank leggings higher so the fabric pulls tight between her cheeks, golden skin with light sweat sheen, ponytail swinging, confident smirk straight into camera, dim overhead gym lights with purple neon accents, empty machines blurred behind her, Raw photo, candid photography, authentic snapshot, motion blur on arms, messy background with scattered weights and towels, low lighting, slight chromatic aberration",
+        "negative_prompt": "ugly, deformed, noisy, blurry, low quality, distorted, watermark, text, logo, artificial lighting, oversaturated, perfect studio lighting, airbrushed skin, flawless complexion, professional makeup, CGI, 3d render, anime, perfect, flawless, professional photoshoot",
+        "lora_params": {},
+        "generation_params": {
+          "width": 768,
+          "height": 1024,
+          "steps": 9,
+          "cfg": 1.0
+        }
+      },
+      "content_type": "gym_workout",
+      "subtype": "cable_machine",
+      "mood": "confident"
+    }
+  ]
+}

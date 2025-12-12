@@ -511,6 +511,9 @@
             "desc": "An audio post where Lara shares a cheeky or intimate thought, engaging her audience with her bold personality in a personal way."
           }
         }
+      },
+      "content_strategy": {
+        "archetype": "Gym Girl"
       }
     }
   }

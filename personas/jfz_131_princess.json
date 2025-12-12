@@ -533,6 +533,9 @@
             "desc": "Curated posts featuring multiple outfits styled by her, showcasing her fashion sense and the latest trends she loves."
           }
         }
+      },
+      "content_strategy": {
+        "archetype": "ABG"
       }
     }
   }
